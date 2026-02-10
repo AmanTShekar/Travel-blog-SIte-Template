@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Arjun Malhotra | The Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">AERIE</div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="index.html#mandates">MANDATES</a>
+            <a href="index.html#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <h1 class="reveal">The Journey <br><span class="editorial">22,000 Miles Across India</span></h1>
+        <p class="reveal" style="max-width: 700px; margin: 2rem auto; font-size: 1.1rem; color: var(--text-sec);">
+            From 2010 to 2022, I hitchhiked across every corner of India. This is the map of that journey—
+            every state, every mile, every lesson learned on the road.
+        </p>
+    </section>
+
+    <!-- Interactive India Map Section -->
+    <section class="map-section">
+        <div class="map-container reveal">
+            <h2 style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label">02 // THE ROUTE</span><br>
+                India: State by State
+            </h2>
+
+            <!-- SVG India Map -->
+            <div class="india-map-wrapper">
+                <svg viewBox="0 0 800 900" class="india-map" id="indiaMap">
+                    <!-- Simplified India Map with States -->
+                    <!-- Kashmir & Ladakh -->
+                    <path class="state" data-state="Jammu & Kashmir" data-order="1"
+                        d="M 200,50 L 280,40 L 320,80 L 300,120 L 250,110 L 200,90 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Punjab & Himachal -->
+                    <path class="state" data-state="Punjab" data-order="2"
+                        d="M 220,120 L 270,110 L 290,140 L 260,160 L 220,150 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Uttarakhand -->
+                    <path class="state" data-state="Uttarakhand" data-order="3"
+                        d="M 290,140 L 340,130 L 360,160 L 320,180 L 290,170 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Rajasthan -->
+                    <path class="state" data-state="Rajasthan" data-order="4"
+                        d="M 150,180 L 250,170 L 280,250 L 240,320 L 160,300 L 130,240 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Gujarat -->
+                    <path class="state" data-state="Gujarat" data-order="5"
+                        d="M 130,320 L 200,310 L 220,400 L 180,450 L 120,420 L 100,360 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Maharashtra -->
+                    <path class="state" data-state="Maharashtra" data-order="6"
+                        d="M 200,400 L 320,390 L 340,480 L 280,520 L 220,500 L 180,450 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Goa -->
+                    <path class="state" data-state="Goa" data-order="7" d="M 240,520 L 260,520 L 265,545 L 245,545 Z"
+                        fill="rgba(212, 175, 55, 0.1)" stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Karnataka -->
+                    <path class="state" data-state="Karnataka" data-order="8"
+                        d="M 220,550 L 320,540 L 340,640 L 280,680 L 220,650 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Kerala -->
+                    <path class="state" data-state="Kerala" data-order="9"
+                        d="M 200,680 L 250,670 L 260,780 L 220,800 L 200,750 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Tamil Nadu -->
+                    <path class="state" data-state="Tamil Nadu" data-order="10"
+                        d="M 260,680 L 340,670 L 360,780 L 320,820 L 260,800 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Uttar Pradesh -->
+                    <path class="state" data-state="Uttar Pradesh" data-order="11"
+                        d="M 290,180 L 420,170 L 440,250 L 380,280 L 300,270 L 280,220 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Bihar -->
+                    <path class="state" data-state="Bihar" data-order="12"
+                        d="M 440,250 L 520,240 L 530,290 L 480,310 L 440,300 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- West Bengal -->
+                    <path class="state" data-state="West Bengal" data-order="13"
+                        d="M 530,290 L 600,280 L 620,360 L 580,400 L 520,380 L 500,330 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Odisha -->
+                    <path class="state" data-state="Odisha" data-order="14"
+                        d="M 480,380 L 560,370 L 580,460 L 520,490 L 460,470 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Madhya Pradesh -->
+                    <path class="state" data-state="Madhya Pradesh" data-order="15"
+                        d="M 280,280 L 440,270 L 460,370 L 380,400 L 300,390 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Andhra Pradesh -->
+                    <path class="state" data-state="Andhra Pradesh" data-order="16"
+                        d="M 340,490 L 480,480 L 500,600 L 420,640 L 340,620 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Telangana -->
+                    <path class="state" data-state="Telangana" data-order="17"
+                        d="M 360,440 L 440,430 L 460,510 L 400,540 L 360,520 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Assam & Northeast -->
+                    <path class="state" data-state="Assam" data-order="18"
+                        d="M 620,280 L 700,270 L 720,340 L 680,370 L 620,350 Z" fill="rgba(212, 175, 55, 0.1)"
+                        stroke="rgba(212, 175, 55, 0.3)" stroke-width="1" />
+
+                    <!-- Travel Route Line -->
+                    <polyline id="travelRoute"
+                        points="240,70 250,130 300,150 200,250 150,380 240,460 250,535 240,600 230,720 280,750 320,760"
+                        fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,5" opacity="0.6" />
+
+                    <!-- Journey Start Point -->
+                    <circle cx="240" cy="70" r="6" fill="var(--accent)" class="journey-point">
+                        <title>Start: Kashmir (2010)</title>
+                    </circle>
+
+                    <!-- Journey End Point -->
+                    <circle cx="320" cy="760" r="6" fill="var(--accent)" class="journey-point">
+                        <title>End: Tamil Nadu (2022)</title>
+                    </circle>
+                </svg>
+            </div>
+
+            <!-- Map Legend -->
+            <div class="map-legend reveal">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--accent);"></div>
+                    <span>Traveled Route</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color"
+                        style="background: rgba(212, 175, 55, 0.2); border: 1px solid var(--accent);"></div>
+                    <span>States Visited (25)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- State Details -->
+        <div class="state-details reveal" id="stateDetails">
+            <h3>Hover over states to explore</h3>
+            <p>Click on any state to see detailed stories from that region.</p>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="timeline-section">
+        <h2 class="reveal" style="text-align: center; margin-bottom: 4rem;">
+            <span class="section-label">03 // THE TIMELINE</span><br>
+            12 Years on the Road
+        </h2>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-content">
+                    <h4>The Beginning</h4>
+                    <p>Started in Kashmir with nothing but a backpack and ₹5,000. First ride: a truck driver heading to
+                        Srinagar.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-content">
+                    <h4>Desert Crossing</h4>
+                    <p>Spent 6 months in Rajasthan, learning the art of slow travel and deep cultural immersion.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-content">
+                    <h4>The South</h4>
+                    <p>Discovered Kerala's backwaters and Tamil Nadu's temple architecture. The journey became a
+                        spiritual quest.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2018</div>
+                <div class="timeline-content">
+                    <h4>Northeast Exploration</h4>
+                    <p>Ventured into Assam, Meghalaya, and Arunachal Pradesh. The most challenging and rewarding leg.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-content">
+                    <h4>Dubai Base</h4>
+                    <p>Established operations in Dubai, transforming 12 years of raw experience into curated luxury
+                        mandates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home -->
+    <section style="padding: 5rem var(--spacing-page); text-align: center; background: var(--bg-sec);">
+        <a href="index.html" class="btn-gold">RETURN TO HOME</a>
+    </section>
+
+    <script>
+        // Cursor
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        let mx = 0, my = 0, bx = 0, by = 0;
+
+        document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+        function animate() { bx += (mx - bx) * 0.1; by += (my - by) * 0.1; follower.style.left = bx + 'px'; follower.style.top = by + 'px'; requestAnimationFrame(animate); }
+        animate();
+
+        document.querySelectorAll('a, button, .state').forEach(el => {
+            el.addEventListener('mouseenter', () => follower.classList.add('cursor-active'));
+            el.addEventListener('mouseleave', () => follower.classList.remove('cursor-active'));
+        });
+
+        // Reveal
+        const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // Interactive Map
+        const states = document.querySelectorAll('.state');
+        const stateDetails = document.getElementById('stateDetails');
+
+        const stateInfo = {
+            'Jammu & Kashmir': { year: '2010', story: 'The journey began here. First hitchhike in a military convoy through mountain passes.' },
+            'Punjab': { year: '2010', story: 'Slept in truck cabins, learned Punjabi folk songs from drivers.' },
+            'Rajasthan': { year: '2011-2012', story: 'Six months in the desert. Jaisalmer, Jodhpur, Udaipur—each city a masterclass in heritage.' },
+            'Gujarat': { year: '2012', story: 'Rann of Kutch during full moon. An otherworldly experience.' },
+            'Maharashtra': { year: '2013', story: 'Mumbai—where it all started. Returned as a changed person.' },
+            'Goa': { year: '2013', story: 'Not just beaches. Discovered Portuguese architecture and spice plantations.' },
+            'Kerala': { year: '2015', story: 'Backwaters, houseboats, and Ayurvedic wisdom. The soul of South India.' },
+            'Tamil Nadu': { year: '2015', story: 'Temple architecture that defies logic. Madurai, Thanjavur, Kanyakumari.' },
+            'Karnataka': { year: '2014', story: 'Hampi ruins and Coorg coffee estates. History meets nature.' },
+            'West Bengal': { year: '2016', story: 'Kolkata\'s chaos and Darjeeling\'s serenity. Contrasts that define India.' },
+            'Assam': { year: '2018', story: 'Tea gardens and the mighty Brahmaputra. Gateway to the Northeast.' },
+            'Uttar Pradesh': { year: '2011', story: 'Varanasi—the spiritual epicenter. Witnessed life and death on the ghats.' },
+            'Bihar': { year: '2016', story: 'Bodh Gaya and Nalanda. Buddhism\'s birthplace.' },
+            'Odisha': { year: '2017', story: 'Konark Sun Temple and Puri beaches. Underrated gem.' },
+            'Madhya Pradesh': { year: '2012', story: 'Khajuraho temples and Bandhavgarh tigers. Central India\'s heart.' },
+            'Uttarakhand': { year: '2010', story: 'Rishikesh and Haridwar. Where the Ganges begins its journey.' },
+            'Andhra Pradesh': { year: '2015', story: 'Tirupati and Visakhapatnam. Coastal beauty meets devotion.' },
+            'Telangana': { year: '2015', story: 'Hyderabad\'s biryani and Golconda Fort. A foodie\'s paradise.' }
+        };
+
+        states.forEach(state => {
+            state.addEventListener('mouseenter', function () {
+                const stateName = this.getAttribute('data-state');
+                const info = stateInfo[stateName];
+
+                if (info) {
+                    stateDetails.innerHTML = `
+                        <h3>${stateName}</h3>
+                        <p class="state-year" style="color: var(--accent); font-family: var(--font-heading); font-size: 1.5rem; margin: 1rem 0;">${info.year}</p>
+                        <p>${info.story}</p>
+                    `;
+                }
+
+                this.style.fill = 'rgba(212, 175, 55, 0.3)';
+                this.style.stroke = 'var(--accent)';
+                this.style.strokeWidth = '2';
+            });
+
+            state.addEventListener('mouseleave', function () {
+                this.style.fill = 'rgba(212, 175, 55, 0.1)';
+                this.style.stroke = 'rgba(212, 175, 55, 0.3)';
+                this.style.strokeWidth = '1';
+            });
+        });
+
+        // Animate route on load
+        const route = document.getElementById('travelRoute');
+        const routeLength = route.getTotalLength();
+        route.style.strokeDasharray = routeLength;
+        route.style.strokeDashoffset = routeLength;
+
+        setTimeout(() => {
+            route.style.transition = 'stroke-dashoffset 4s ease-in-out';
+            route.style.strokeDashoffset = '0';
+        }, 500);
+    </script>
+</body>
+
+</html>
