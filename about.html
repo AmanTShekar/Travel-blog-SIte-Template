@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Arjun Malhotra | The Journey</title>
+    <title>About | The Journey</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -17,305 +21,260 @@
         <div class="logo">AERIE</div>
         <div class="nav-links">
             <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="index.html#mandates">MANDATES</a>
-            <a href="index.html#contact">CONTACT</a>
+            <a href="about.html" class="active">ABOUT</a>
+            <a href="mandates.html">MANDATES</a>
+            <a href="journal.html">JOURNAL</a>
+            <a href="#contact">INQUIRE</a>
         </div>
     </nav>
 
     <!-- Cinematic Hero -->
     <section class="about-hero-cinematic">
+        <div class="video-background">
+            <video autoplay muted loop playsinline
+                poster="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=80">
+                <source
+                    src="https://assets.mixkit.co/videos/preview/mixkit-himalayan-mountains-under-the-sunlight-34351-large.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-label reveal">THE ARCHITECT'S ODYSSEY</span>
-            <h1 class="reveal">22,000 Miles<br><span class="editorial-gold">Across India</span></h1>
-            <p class="hero-subtitle reveal">2010 — 2022 | 25 States | 150+ Cities</p>
+            <span class="section-label reveal">THE ARCHITECT'S ODYSSEY</span>
+            <h1 class="reveal">The Pursuit of<br><span class="editorial-gold">Freedom</span></h1>
+            <p class="section-text reveal" style="color: rgba(255,255,255,0.7);">2010 — PRESENT | A LIFETIME ON THE ROAD
+            </p>
         </div>
         <div class="scroll-indicator">
-            <span>Scroll to Explore</span>
+            <span class="section-label" style="font-size: 0.6rem;">Scroll to Enter the Trace</span>
             <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Journey Stats -->
-    <section class="journey-stats-premium">
-        <div class="stats-container">
-            <div class="stat-premium reveal">
-                <div class="stat-icon">📍</div>
-                <h3 class="stat-number-animated" data-target="22000">0</h3>
-                <p>Miles Traveled</p>
-            </div>
-            <div class="stat-premium reveal">
-                <div class="stat-icon">🗺️</div>
-                <h3 class="stat-number-animated" data-target="25">0</h3>
-                <p>States Explored</p>
-            </div>
-            <div class="stat-premium reveal">
-                <div class="stat-icon">⏱️</div>
-                <h3 class="stat-number-animated" data-target="12">0</h3>
-                <p>Years on Road</p>
-            </div>
-            <div class="stat-premium reveal">
-                <div class="stat-icon">🏛️</div>
-                <h3 class="stat-number-animated" data-target="150">0</h3>
-                <p>Cities Mapped</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Map Masterpiece -->
+    <!-- Map Section (The Masterpiece) -->
     <section class="map-masterpiece">
         <div class="map-intro reveal">
-            <span class="section-label">THE ROUTE</span>
-            <h2>India: A 12-Year Journey</h2>
-            <p>Hover over states to reveal stories. Click to explore in detail.</p>
+            <span class="section-label">THE ATLAS</span>
+            <h2 class="section-title">22,000 Miles <br><span class="editorial">Mapped.</span></h2>
+            <p class="section-text" style="max-width: 600px; margin: 0 auto;">Every line on this map represents a
+                broken axle, a night under the stars, or a conversation that changed a worldview.</p>
         </div>
 
-        <div class="map-experience">
-            <!-- SVG India Map -->
+        <div class="luxe-map-container">
+            <!-- Interactive Map Canvas -->
             <div class="map-canvas reveal">
-                <svg viewBox="0 0 1000 1200" class="india-map-svg" id="indiaMapSVG">
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#f4d03f;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
+                <svg class="map-interaction-layer" viewBox="0 0 800 1000">
+                    <!-- Stylized India Map Path (Simplified for Demo) -->
+                    <path class="state-path" d="M300,100 L500,100 L550,300 L600,400 L500,800 L300,900 L200,600 Z" />
 
-                    <!-- India Outline (Simplified but recognizable) -->
-                    <g id="indiaOutline">
-                        <!-- Kashmir & Ladakh -->
-                        <path class="state-path" data-state="Kashmir" data-year="2010" data-visited="true"
-                            d="M 400,80 L 480,60 L 520,100 L 500,150 L 450,140 L 400,120 Z" />
+                    <!-- The Journey Route -->
+                    <path class="journey-route-realistic" d="M320,850 C300,700 400,600 350,500 S450,300 400,150" />
 
-                        <!-- Punjab -->
-                        <path class="state-path" data-state="Punjab" data-year="2010" data-visited="true"
-                            d="M 380,150 L 450,140 L 470,180 L 430,200 L 380,190 Z" />
-
-                        <!-- Himachal Pradesh -->
-                        <path class="state-path" data-state="Himachal" data-year="2010" data-visited="true"
-                            d="M 430,120 L 480,110 L 500,150 L 470,170 L 430,160 Z" />
-
-                        <!-- Uttarakhand -->
-                        <path class="state-path" data-state="Uttarakhand" data-year="2011" data-visited="true"
-                            d="M 500,150 L 560,140 L 580,180 L 540,200 L 500,190 Z" />
-
-                        <!-- Rajasthan -->
-                        <path class="state-path" data-state="Rajasthan" data-year="2011-2012" data-visited="true"
-                            d="M 250,200 L 380,190 L 420,320 L 380,420 L 280,400 L 220,320 Z" />
-
-                        <!-- Gujarat -->
-                        <path class="state-path" data-state="Gujarat" data-year="2012" data-visited="true"
-                            d="M 200,420 L 320,410 L 340,550 L 280,620 L 180,580 L 160,480 Z" />
-
-                        <!-- Maharashtra -->
-                        <path class="state-path" data-state="Maharashtra" data-year="2013" data-visited="true"
-                            d="M 320,520 L 480,510 L 520,650 L 460,720 L 340,700 L 280,620 Z" />
-
-                        <!-- Goa -->
-                        <path class="state-path" data-state="Goa" data-year="2013" data-visited="true"
-                            d="M 360,720 L 400,720 L 410,760 L 370,760 Z" />
-
-                        <!-- Karnataka -->
-                        <path class="state-path" data-state="Karnataka" data-year="2014" data-visited="true"
-                            d="M 340,760 L 480,750 L 520,900 L 460,960 L 340,940 Z" />
-
-                        <!-- Kerala -->
-                        <path class="state-path" data-state="Kerala" data-year="2015" data-visited="true"
-                            d="M 320,960 L 400,950 L 420,1100 L 360,1140 L 320,1080 Z" />
-
-                        <!-- Tamil Nadu -->
-                        <path class="state-path" data-state="Tamil Nadu" data-year="2015" data-visited="true"
-                            d="M 420,900 L 540,890 L 580,1080 L 520,1140 L 420,1120 Z" />
-
-                        <!-- Andhra Pradesh -->
-                        <path class="state-path" data-state="Andhra Pradesh" data-year="2014" data-visited="true"
-                            d="M 480,720 L 640,710 L 660,880 L 580,920 L 480,900 Z" />
-
-                        <!-- Telangana -->
-                        <path class="state-path" data-state="Telangana" data-year="2014" data-visited="true"
-                            d="M 480,620 L 580,610 L 600,720 L 540,760 L 480,740 Z" />
-
-                        <!-- Madhya Pradesh -->
-                        <path class="state-path" data-state="Madhya Pradesh" data-year="2012" data-visited="true"
-                            d="M 420,320 L 620,310 L 640,500 L 560,540 L 420,520 Z" />
-
-                        <!-- Uttar Pradesh -->
-                        <path class="state-path" data-state="Uttar Pradesh" data-year="2011" data-visited="true"
-                            d="M 470,200 L 680,190 L 700,320 L 620,360 L 470,340 Z" />
-
-                        <!-- Bihar -->
-                        <path class="state-path" data-state="Bihar" data-year="2016" data-visited="true"
-                            d="M 680,320 L 780,310 L 800,400 L 740,440 L 680,420 Z" />
-
-                        <!-- West Bengal -->
-                        <path class="state-path" data-state="West Bengal" data-year="2016" data-visited="true"
-                            d="M 780,400 L 860,390 L 900,520 L 840,580 L 760,560 L 720,480 Z" />
-
-                        <!-- Odisha -->
-                        <path class="state-path" data-state="Odisha" data-year="2017" data-visited="true"
-                            d="M 680,540 L 800,530 L 820,680 L 740,720 L 660,700 Z" />
-
-                        <!-- Chhattisgarh -->
-                        <path class="state-path" data-state="Chhattisgarh" data-year="2013" data-visited="true"
-                            d="M 580,500 L 680,490 L 700,620 L 640,660 L 580,640 Z" />
-
-                        <!-- Jharkhand -->
-                        <path class="state-path" data-state="Jharkhand" data-year="2016" data-visited="true"
-                            d="M 700,420 L 780,410 L 800,520 L 740,560 L 700,540 Z" />
-
-                        <!-- Assam & Northeast -->
-                        <path class="state-path" data-state="Assam" data-year="2018" data-visited="true"
-                            d="M 860,320 L 940,310 L 960,420 L 920,460 L 860,440 Z" />
-
-                        <!-- Meghalaya -->
-                        <path class="state-path" data-state="Meghalaya" data-year="2018" data-visited="true"
-                            d="M 880,460 L 940,450 L 950,510 L 900,530 L 880,500 Z" />
+                    <!-- Hotspots -->
+                    <g class="hotspot" transform="translate(400, 150)" onclick="openStory('ladakh')">
+                        <circle class="pulse-outer" r="15" />
+                        <circle class="pulse-inner" r="4" />
                     </g>
-
-                    <!-- Journey Route Path -->
-                    <path id="journeyPath" class="journey-route"
-                        d="M 440,100 L 420,170 L 300,300 L 240,500 L 360,600 L 380,740 L 370,1000 L 480,1050"
-                        fill="none" stroke="url(#goldGradient)" stroke-width="3" stroke-dasharray="10,5"
-                        filter="url(#glow)" />
-
-                    <!-- Start Marker -->
-                    <g class="journey-start" transform="translate(440, 100)">
-                        <circle r="12" fill="var(--accent)" filter="url(#glow)">
-                            <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite" />
-                        </circle>
-                        <text y="-20" text-anchor="middle" fill="var(--accent)" font-size="14"
-                            font-weight="bold">START</text>
+                    <g class="hotspot" transform="translate(350, 500)" onclick="openStory('rajasthan')">
+                        <circle class="pulse-outer" r="15" />
+                        <circle class="pulse-inner" r="4" />
                     </g>
-
-                    <!-- End Marker -->
-                    <g class="journey-end" transform="translate(480, 1050)">
-                        <circle r="12" fill="var(--accent)" filter="url(#glow)">
-                            <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite" />
-                        </circle>
-                        <text y="30" text-anchor="middle" fill="var(--accent)" font-size="14"
-                            font-weight="bold">END</text>
+                    <g class="hotspot" transform="translate(320, 850)" onclick="openStory('kerala')">
+                        <circle class="pulse-outer" r="15" />
+                        <circle class="pulse-inner" r="4" />
                     </g>
                 </svg>
             </div>
 
             <!-- Story Panel -->
-            <div class="story-panel reveal">
-                <div class="story-header">
-                    <h3>State Stories</h3>
-                    <p class="story-hint">Hover over states to explore</p>
+            <div class="story-panel-luxe reveal">
+                <div class="story-content-inner" id="story-content">
+                    <span class="section-label">SELECT A COORDINATE</span>
+                    <h3>The Trace.</h3>
+                    <p class="section-text">Explore the key mandates that define the AERIE philosophy.</p>
                 </div>
-                <div class="story-display" id="storyDisplay">
-                    <div class="default-story">
-                        <div class="story-icon">🗺️</div>
-                        <h4>The Complete Journey</h4>
-                        <p>From Kashmir's snow-capped peaks to Tamil Nadu's tropical shores,
-                            this 12-year odyssey covered every climate, culture, and landscape India offers.</p>
-                        <div class="story-stats">
-                            <span>25 States</span>
-                            <span>150+ Cities</span>
-                            <span>22,000 Miles</span>
-                        </div>
+                <div class="sub-cards-stack"
+                    style="margin-top: 4rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="sub-card active" onclick="openStory('ladakh')">
+                        <span class="section-label" style="margin: 0;">2012</span>
+                        <h4>The Grey Ghost</h4>
+                    </div>
+                    <div class="sub-card" onclick="openStory('rajasthan')">
+                        <span class="section-label" style="margin: 0;">2015</span>
+                        <h4>Royal Nexus</h4>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Photo Gallery Timeline -->
-    <section class="photo-timeline">
-        <div class="timeline-header reveal">
-            <span class="section-label">KEY MOMENTS</span>
-            <h2>Defining Experiences</h2>
+    <!-- Travel Archives (Premium Grid) -->
+    <section class="travel-archives-luxe">
+        <div class="reveal" style="text-align: center; margin-bottom: 6rem;">
+            <span class="section-label">THE ARCHIVE</span>
+            <h2 class="section-title">Artifacts <br><span class="editorial">of the Road.</span></h2>
         </div>
 
-        <div class="timeline-grid">
-            <div class="timeline-card reveal" style="--delay: 0.1s">
-                <div class="card-image"
-                    style="background-image: url('https://images.unsplash.com/photo-1609920658906-8223bd289001?auto=format&fit=crop&w=1200&q=80');">
-                    <div class="card-overlay">
-                        <span class="card-year">2010</span>
-                    </div>
+        <div class="archives-grid">
+            <div class="archive-item reveal">
+                <div class="archive-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1504705759706-c5ee7158f8bb?auto=format&fit=crop&w=800&q=80');">
                 </div>
-                <div class="card-content">
-                    <h3>The First Ride</h3>
-                    <p>Kashmir. A truck driver offered chai and a 200-mile ride. That moment changed everything.</p>
+                <div class="archive-info">
+                    <h3>Gear</h3>
+                    <p>The tactical essentials.</p>
                 </div>
             </div>
-
-            <div class="timeline-card reveal" style="--delay: 0.2s">
-                <div class="card-image"
-                    style="background-image: url('https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1200&q=80');">
-                    <div class="card-overlay">
-                        <span class="card-year">2012</span>
-                    </div>
+            <div class="archive-item reveal">
+                <div class="archive-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1544640808-32ca72ac7f37?auto=format&fit=crop&w=800&q=80');">
                 </div>
-                <div class="card-content">
-                    <h3>Desert Silence</h3>
-                    <p>Six months in Rajasthan's Thar. Learned that luxury is precision, not abundance.</p>
+                <div class="archive-info">
+                    <h3>Notes</h3>
+                    <p>Field journals & maps.</p>
                 </div>
             </div>
-
-            <div class="timeline-card reveal" style="--delay: 0.3s">
-                <div class="card-image"
-                    style="background-image: url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80');">
-                    <div class="card-overlay">
-                        <span class="card-year">2015</span>
-                    </div>
+            <div class="archive-item reveal">
+                <div class="archive-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1520939817895-060bdaf4deb1?auto=format&fit=crop&w=800&q=80');">
                 </div>
-                <div class="card-content">
-                    <h3>Backwater Wisdom</h3>
-                    <p>Kerala's houseboats. Discovered that the best journeys move slowly.</p>
-                </div>
-            </div>
-
-            <div class="timeline-card reveal" style="--delay: 0.4s">
-                <div class="card-image"
-                    style="background-image: url('https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1200&q=80');">
-                    <div class="card-overlay">
-                        <span class="card-year">2018</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3>Northeast Frontier</h3>
-                    <p>Assam & Meghalaya. The inaccessible is the most valuable.</p>
+                <div class="archive-info">
+                    <h3>People</h3>
+                    <p>Portraits of the invisible.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Philosophy Quote -->
-    <section class="philosophy-quote">
-        <div class="quote-container reveal">
-            <div class="quote-mark">"</div>
-            <p class="quote-text">
-                12 years on India's roads taught me that luxury isn't about comfort—it's about access.
-                Access to the inaccessible. Access to experiences that rewire how you see the world.
-            </p>
-            <div class="quote-author">— Arjun Malhotra</div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="final-cta">
-        <div class="cta-box reveal">
-            <h2>Ready to Experience India?</h2>
-            <p>Let's architect your journey together.</p>
-            <div class="cta-buttons">
-                <a href="index.html#contact" class="btn-gold">START YOUR MANDATE</a>
-                <a href="index.html" class="btn-outline">RETURN HOME</a>
+    <!-- Philosophy -->
+    <section class="philosophy-lux"
+        style="padding: 15rem var(--spacing-container); background: #080808; text-align: center; border-top: 1px solid var(--border-light);">
+        <div class="reveal">
+            <span class="section-label" style="display: block; margin-bottom: 3rem;">THE MANDATE</span>
+            <div style="max-width: 900px; margin: 0 auto; position: relative;">
+                <span
+                    style="font-family: var(--font-heading); font-size: 10rem; position: absolute; top: -5rem; left: 50%; transform: translateX(-50%); opacity: 0.05; pointer-events: none;">"</span>
+                <p
+                    style="font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.4; color: var(--text-prime); margin-bottom: 2rem;">
+                    12 years on India's roads taught me that <span class="editorial-gold">luxury isn't about
+                        comfort</span>—it's about
+                    access.
+                </p>
+                <div style="margin-top: 4rem;">
+                    <span class="section-label"
+                        style="display: inline-block; border-bottom: 1px solid var(--accent); padding-bottom: 5px;">ARJUN
+                        MALHOTRA</span>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- The Process (New Section) -->
+    <section class="process-section">
+        <div class="reveal" style="text-align: center; margin-bottom: 6rem;">
+            <span class="section-label">THE METHOD</span>
+            <h2 class="section-title">Deconstructing <br><span class="editorial">The Mandate.</span></h2>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <span class="step-number">01</span>
+                <h4 class="step-title">The Forensic Audit</h4>
+                <p class="step-desc">We don't ask where you want to go. We interrogate who you are, what you fear, and
+                    what you crave.</p>
+            </div>
+
+            <div class="process-step reveal">
+                <span class="step-number">02</span>
+                <h4 class="step-title">The Warning</h4>
+                <p class="step-desc">We present a "Warning Order"—a rough sketch of a journey designed to push your
+                    boundaries.</p>
+            </div>
+
+            <div class="process-step reveal">
+                <span class="step-number">03</span>
+                <h4 class="step-title">The Architecture</h4>
+                <p class="step-desc">We build the logistics. Private aviation, security detail, and access to restricted
+                    zones.</p>
+            </div>
+
+            <div class="process-step reveal">
+                <span class="step-number">04</span>
+                <h4 class="step-title">The Extraction</h4>
+                <p class="step-desc">You deploy. We monitor. You return changed. The only souvenir is a shifted
+                    worldview.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Synced with Home) -->
+    <footer id="contact">
+        <div class="footer-grid reveal">
+            <div class="footer-brand">
+                <h2>AERIE</h2>
+                <p style="color: var(--text-sec); max-width: 300px; font-size: 0.9rem; line-height: 1.6;">The
+                    architecture of 22,000 miles of solo hitchhiking, refined into mandates for the global elite.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul>
+                    <li><a href="about.html">The Architect</a></li>
+                    <li><a href="mandates.html">Mandates</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>CONNECT</h4>
+                <ul>
+                    <li><a href="mailto:access@aerie.travel">access@aerie.travel</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom reveal">
+            <div>© 2025 AERIE GLOBAL. ALL RIGHTS RESERVED.</div>
+            <div>DUBAI // MUMBAI // DELHI // LONDON</div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
     <script src="about.js"></script>
+    <script>
+        // Story Data
+        const stories = {
+            'ladakh': {
+                title: 'The Grey Ghost',
+                desc: 'Tracking snow leopards in Hemis National Park. A study in patience and silence.'
+            },
+            'rajasthan': {
+                title: 'Royal Nexus',
+                desc: 'Private access to the Jaipur Royal Family quarters. History living and breathing.'
+            },
+            'kerala': {
+                title: 'Emerald Static',
+                desc: 'The untouched backwaters of Alleppey. Where time stops moving.'
+            }
+        };
+
+        function openStory(id) {
+            const content = document.getElementById('story-content');
+            const data = stories[id];
+            content.innerHTML = `
+                <span class="section-label fade-in">COORDINATE: ${id.toUpperCase()}</span>
+                <h3 class="fade-in">${data.title}</h3>
+                <p class="section-text fade-in">${data.desc}</p>
+                <a href="#" class="btn-gold fade-in" style="margin-top: 2rem;">VIEW FULL LOG</a>
+            `;
+
+            // Highlight active card
+            document.querySelectorAll('.sub-card').forEach(c => c.classList.remove('active'));
+            // In a real app, match the clicked element
+        }
+    </script>
 </body>
 
 </html>

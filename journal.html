@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal | Aerie Global</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Journal Specific Styles */
+        .journal-hero {
+            padding: 12rem var(--spacing-page) 6rem;
+            text-align: center;
+            background: var(--bg-prime);
+        }
+
+        .journal-grid {
+            padding: 4rem var(--spacing-page);
+            background: var(--bg-sec);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6rem;
+        }
+
+        .journal-entry {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 6rem;
+        }
+
+        .journal-visual {
+            position: relative;
+            overflow: hidden;
+            height: 50vh;
+            border: 1px solid var(--border-light);
+        }
+
+        .journal-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s;
+        }
+
+        /* The Lens Effect Placeholder */
+        .lens-overlay {
+            position: absolute;
+            inset: 0;
+            background: url('https://www.transparenttextures.com/patterns/noise.png');
+            opacity: 0.4;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .journal-entry:hover .journal-visual img {
+            transform: scale(1.03);
+        }
+
+        .journal-meta {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .journal-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-prime);
+            margin-bottom: 2rem;
+        }
+
+        .journal-excerpt {
+            font-family: var(--font-editorial);
+            font-size: 1.1rem;
+            color: var(--text-sec);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        @media (min-width: 1024px) {
+            .journal-entry {
+                grid-template-columns: 1.5fr 1fr;
+            }
+
+            .journal-entry.alt {
+                grid-template-columns: 1fr 1.5fr;
+            }
+
+            .journal-entry.alt .journal-content {
+                order: -1;
+                text-align: right;
+            }
+
+            .journal-entry.alt .journal-excerpt {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <nav>
+        <div class="logo">AERIE</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="mandates.html">Mandates</a>
+            <a href="journal.html" class="active">Journal</a>
+            <a href="#contact">Inquire</a>
+        </div>
+    </nav>
+
+    <section class="journal-hero">
+        <span class="section-label reveal">THE TRACE</span>
+        <h1 class="section-title reveal">Field Notes from <br><span class="editorial">The Road.</span></h1>
+    </section>
+
+    <section class="journal-grid">
+        <!-- Entry 1 -->
+        <article class="journal-entry reveal">
+            <div class="journal-visual">
+                <img src="https://images.unsplash.com/photo-1540626334746-8575086789e0?auto=format&fit=crop&w=1200&q=80"
+                    alt="Ladakh">
+                <div class="lens-overlay"></div>
+            </div>
+            <div class="journal-content">
+                <div class="journal-meta">VOL. 01 // HIMALAYAS</div>
+                <h2 class="journal-title">Silence as Currency</h2>
+                <p class="journal-excerpt">Why the ultra-wealthy are trading connectivity for the absolute void of the
+                    Ladakhi plateau.</p>
+                <a href="#" class="btn-gold">READ DISPATCH</a>
+            </div>
+        </article>
+
+        <!-- Entry 2 (Alt Layout) -->
+        <article class="journal-entry alt reveal">
+            <div class="journal-visual">
+                <img src="https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=1200&q=80"
+                    alt="Jaipur">
+            </div>
+            <div class="journal-content">
+                <div class="journal-meta">VOL. 02 // RAJASTHAN</div>
+                <h2 class="journal-title">The Private Palace</h2>
+                <p class="journal-excerpt">Beyond the hotel suite. Accessing the personal quarters of the Maharaja,
+                    where history is still living.</p>
+                <a href="#" class="btn-gold">READ DISPATCH</a>
+            </div>
+        </article>
+
+        <!-- Entry 3 -->
+        <article class="journal-entry reveal">
+            <div class="journal-visual">
+                <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=1200&q=80"
+                    alt="Kerala">
+            </div>
+            <div class="journal-content">
+                <div class="journal-meta">VOL. 03 // THE SOUTH</div>
+                <h2 class="journal-title">Emerald Static</h2>
+                <p class="journal-excerpt">Navigating the backwaters of Alleppey in total silence. A study in slow
+                    movement.</p>
+                <a href="#" class="btn-gold">READ DISPATCH</a>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>AERIE</h2>
+                <p style="color: var(--text-sec); max-width: 300px; font-size: 0.9rem; line-height: 1.6;">The
+                    architecture of 22,000 miles of solo hitchhiking, refined into mandates for the global elite.</p>
+            </div>
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul>
+                    <li><a href="index.html#about">The Architect</a></li>
+                    <li><a href="mandates.html">Mandates</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

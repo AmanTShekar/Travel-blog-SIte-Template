@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandates | Aerie Global</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Page-Specific Styles for Mandates */
+        .mandates-hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--bg-prime);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .explorer-container {
+            display: flex;
+            height: 100vh;
+            background: var(--bg-prime);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .explorer-list {
+            width: 30%;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .state-item {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--text-sec);
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .state-item:hover,
+        .state-item.active {
+            color: var(--accent);
+            transform: translateX(20px);
+        }
+
+        .explorer-visual {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .visual-layer {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .visual-layer.active {
+            opacity: 0.6;
+        }
+
+        .mandate-card-reveal {
+            position: absolute;
+            bottom: 4rem;
+            right: 4rem;
+            width: 400px;
+            background: var(--bg-sec);
+            border: 1px solid var(--border-light);
+            padding: 2rem;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 0.6s var(--ease-vincent);
+            z-index: 3;
+        }
+
+        .mandate-card-reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Grid */
+        .all-mandates {
+            padding: 8rem var(--spacing-page);
+            background: var(--bg-sec);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <nav>
+        <div class="logo">AERIE</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="mandates.html" class="active">Mandates</a>
+            <a href="journal.html">Journal</a>
+            <a href="#contact">Inquire</a>
+        </div>
+    </nav>
+
+    <section class="mandates-hero">
+        <span class="section-label reveal">THE COLLECTION</span>
+        <h1 class="reveal section-title">Curated <br><span class="editorial-gold">Interventions.</span></h1>
+    </section>
+
+    <!-- Mandate Explorer (Interactive) -->
+    <section class="explorer-container">
+        <div class="explorer-list">
+            <span class="section-label">I WANT TO FEEL...</span>
+            <div class="state-item active" data-target="silence">SILENCE</div>
+            <div class="state-item" data-target="power">POWER</div>
+            <div class="state-item" data-target="origins">ORIGINS</div>
+            <div class="state-item" data-target="wild">WILD</div>
+        </div>
+
+        <div class="explorer-visual">
+            <div class="visual-layer active" id="bg-silence"
+                style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=2000&q=80');">
+            </div>
+            <div class="visual-layer" id="bg-power"
+                style="background-image: url('https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=2000&q=80');">
+            </div>
+            <div class="visual-layer" id="bg-origins"
+                style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80');">
+            </div>
+            <div class="visual-layer" id="bg-wild"
+                style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=2000&q=80');">
+            </div>
+        </div>
+
+        <!-- Dynamic Card -->
+        <div class="mandate-card-reveal active" id="card-silence">
+            <span class="section-label">LADAKH // HIMALAYAS</span>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">The Grey Ghost</h3>
+            <p class="section-text" style="font-size: 0.9rem;">Tracking the snow leopard in the high altitude silence of
+                Hemis National Park.</p>
+            <a href="#" class="btn-gold" style="margin-top: 2rem;">VIEW MANDATE</a>
+        </div>
+
+        <div class="mandate-card-reveal" id="card-power">
+            <span class="section-label">RAJASTHAN // PALACE</span>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Royal Nexus</h3>
+            <p class="section-text" style="font-size: 0.9rem;">Private access to the personal quarters of the Jaipur
+                Royal Family.</p>
+            <a href="#" class="btn-gold" style="margin-top: 2rem;">VIEW MANDATE</a>
+        </div>
+
+        <div class="mandate-card-reveal" id="card-origins">
+            <span class="section-label">VARANASI // GANGES</span>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Kashi Echoes</h3>
+            <p class="section-text" style="font-size: 0.9rem;">A boat ride through time at the oldest living city on
+                earth.</p>
+            <a href="#" class="btn-gold" style="margin-top: 2rem;">VIEW MANDATE</a>
+        </div>
+
+        <div class="mandate-card-reveal" id="card-wild">
+            <span class="section-label">KERALA // BACKWATERS</span>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Emerald Static</h3>
+            <p class="section-text" style="font-size: 0.9rem;">Silent electric houseboats in the untouched canals of
+                Aleppey.</p>
+            <a href="#" class="btn-gold" style="margin-top: 2rem;">VIEW MANDATE</a>
+        </div>
+    </section>
+
+    <!-- Full Grid -->
+    <section class="all-mandates">
+        <div class="gallery-grid" style="height: auto; grid-template-columns: repeat(2, 1fr);">
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1593115052957-adc7f273186c?auto=format&fit=crop&w=800&q=80">
+            </div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1476292026003-1df8db2694b8?auto=format&fit=crop&w=800&q=80">
+            </div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80">
+            </div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1518005020480-10f43bc5406b?auto=format&fit=crop&w=800&q=80">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>AERIE</h2>
+                <p style="color: var(--text-sec); max-width: 300px; font-size: 0.9rem; line-height: 1.6;">The
+                    architecture of 22,000 miles of solo hitchhiking, refined into mandates for the global elite.</p>
+            </div>
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <ul>
+                    <li><a href="index.html#about">The Architect</a></li>
+                    <li><a href="mandates.html">Mandates</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Mandate Explorer Logic
+        const states = document.querySelectorAll('.state-item');
+        const bgs = document.querySelectorAll('.visual-layer');
+        const cards = document.querySelectorAll('.mandate-card-reveal');
+
+        states.forEach(state => {
+            state.addEventListener('mouseenter', () => {
+                // Reset
+                states.forEach(s => s.classList.remove('active'));
+                bgs.forEach(b => b.classList.remove('active'));
+                cards.forEach(c => c.classList.remove('active'));
+
+                // Activate
+                state.classList.add('active');
+                const target = state.dataset.target;
+                document.getElementById('bg-' + target).classList.add('active');
+                document.getElementById('card-' + target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
