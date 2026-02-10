@@ -36,7 +36,7 @@
     <section id="about" class="architect-dossier">
         <div class="dossier-visual-minimal reveal">
             <div class="architect-portrait">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
                     alt="The Architect">
                 <div class="portrait-overlay">
                     <span style="font-size: 0.6rem; letter-spacing: 3px; opacity: 0.6;">EST. 2010</span>
@@ -47,37 +47,61 @@
             <span class="section-label reveal">01 // THE ARCHITECT</span>
             <h2 class="reveal">The Person <br><span class="editorial">Behind the Mandate.</span></h2>
 
-            <p class="dossier-bio reveal" style="font-size: 1.1rem; line-height: 1.8; margin: 3rem 0;">
-                I started at the crossroads of Varanasi and the desert silence of Rajasthan.
-                22,000 miles across 25 Indian states wasn't just my journey—it was my audit of the subcontinent's flow.
-                Today, I operate from Dubai, architecting that same raw authenticity into pristine, world-class travel
-                mandates.
-            </p>
+            <!-- Personal Bio -->
+            <div class="architect-bio reveal">
+                <h3
+                    style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem;">
+                    Aman T. Shekar</h3>
+                <p style="font-size: 1rem; line-height: 1.8; color: var(--text-sec); margin-bottom: 2rem;">
+                    Born in the chaos of Mumbai, shaped by the silence of the Himalayas. What started as a solo
+                    hitchhiking journey
+                    across India in 2010 became a 22,000-mile audit of the subcontinent's soul. From sleeping in truck
+                    cabins in Punjab
+                    to negotiating monastery stays in Ladakh, I've lived every mile of India's raw authenticity.
+                </p>
+                <p style="font-size: 1rem; line-height: 1.8; color: var(--text-sec);">
+                    Today, I architect luxury travel mandates from Dubai, translating that unfiltered experience into
+                    pristine,
+                    world-class journeys for the global elite. Every itinerary is a distillation of 12 years on the
+                    road.
+                </p>
+            </div>
 
-            <div style="display: flex; gap: 3rem; margin-top: 4rem; flex-wrap: wrap;" class="reveal">
-                <div>
-                    <h4
-                        style="font-family: var(--font-heading); font-size: 3rem; color: var(--accent); line-height: 1;">
-                        22K+</h4>
-                    <p
-                        style="font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 0.5rem; opacity: 0.6;">
-                        Miles Logged</p>
+            <!-- Stats Grid -->
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <h4 class="stat-number">22K+</h4>
+                    <p class="stat-label">Miles Logged</p>
                 </div>
-                <div>
-                    <h4
-                        style="font-family: var(--font-heading); font-size: 3rem; color: var(--accent); line-height: 1;">
-                        25</h4>
-                    <p
-                        style="font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 0.5rem; opacity: 0.6;">
-                        States Audited</p>
+                <div class="stat-item">
+                    <h4 class="stat-number">25</h4>
+                    <p class="stat-label">States Explored</p>
                 </div>
-                <div>
-                    <h4
-                        style="font-family: var(--font-heading); font-size: 3rem; color: var(--accent); line-height: 1;">
-                        12</h4>
-                    <p
-                        style="font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 0.5rem; opacity: 0.6;">
-                        Years Active</p>
+                <div class="stat-item">
+                    <h4 class="stat-number">12</h4>
+                    <p class="stat-label">Years Active</p>
+                </div>
+                <div class="stat-item">
+                    <h4 class="stat-number">150+</h4>
+                    <p class="stat-label">Cities Mapped</p>
+                </div>
+            </div>
+
+            <!-- Philosophy Cards -->
+            <div class="philosophy-cards reveal">
+                <div class="philosophy-card">
+                    <span class="card-label">PHILOSOPHY</span>
+                    <p class="card-quote">"Luxury isn't about comfort. It's about access to the inaccessible."</p>
+                </div>
+                <div class="philosophy-card">
+                    <span class="card-label">APPROACH</span>
+                    <p class="card-quote">"I don't sell destinations. I architect experiences that rewire how you see
+                        the world."</p>
+                </div>
+                <div class="philosophy-card">
+                    <span class="card-label">MANDATE</span>
+                    <p class="card-quote">"Every journey is a surgical extraction of India's essence, refined for global
+                        sensibilities."</p>
                 </div>
             </div>
         </div>
@@ -416,6 +440,41 @@
 
         // Init Loop
         autoScrollLoop();
+
+        // Animated Stat Counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+                        const target = entry.target;
+                        const finalValue = target.textContent.trim();
+                        const isPlus = finalValue.includes('+');
+                        const numValue = parseInt(finalValue.replace(/[^0-9]/g, ''));
+
+                        let current = 0;
+                        const increment = numValue / 50;
+                        const duration = 2000;
+                        const stepTime = duration / 50;
+
+                        const counter = setInterval(() => {
+                            current += increment;
+                            if (current >= numValue) {
+                                target.textContent = finalValue;
+                                clearInterval(counter);
+                            } else {
+                                target.textContent = Math.floor(current) + (isPlus ? '+' : '');
+                            }
+                        }, stepTime);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statNumbers.forEach(stat => statsObserver.observe(stat));
+        }
+
+        animateStats();
 
     </script>
 </body>
