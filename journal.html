@@ -122,59 +122,126 @@
         </div>
     </nav>
 
-    <section class="journal-hero">
-        <span class="section-label reveal">THE TRACE</span>
-        <h1 class="section-title reveal">Field Notes from <br><span class="editorial">The Road.</span></h1>
-    </section>
+    <main id="app-content">
+        <!-- New Magazine Header -->
+        <section class="journal-magazine-header">
+            <span class="section-label reveal">THE SIGNAL</span>
+            <h1 class="reveal section-title">Field Notes from <br><span class="editorial">The Edge.</span></h1>
+        </section>
 
-    <section class="journal-grid">
-        <!-- Entry 1 -->
-        <article class="journal-entry reveal">
-            <div class="journal-visual">
-                <img src="https://images.unsplash.com/photo-1540626334746-8575086789e0?auto=format&fit=crop&w=1200&q=80"
-                    alt="Ladakh">
-                <div class="lens-overlay"></div>
+        <!-- Featured Article Hero -->
+        <section class="journal-featured reveal">
+            <div class="featured-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1540626334746-8575086789e0?auto=format&fit=crop&w=2000&q=80');">
             </div>
-            <div class="journal-content">
-                <div class="journal-meta">VOL. 01 // HIMALAYAS</div>
-                <h2 class="journal-title">Silence as Currency</h2>
-                <p class="journal-excerpt">Why the ultra-wealthy are trading connectivity for the absolute void of the
-                    Ladakhi plateau.</p>
-                <a href="#" class="btn-gold">READ DISPATCH</a>
+            <div class="featured-content">
+                <span class="section-label" style="color: var(--accent); margin-bottom: 1rem; display: block;">VOL. 05
+                    // FEATURE</span>
+                <h2
+                    style="font-family: var(--font-heading); font-size: 4rem; color: #fff; line-height: 1; margin-bottom: 2rem;">
+                    The Art of <br><span class="editorial-gold">Disappearing Completely.</span></h2>
+                <p class="section-text" style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 600px;">
+                    In an age of hyper-connectivity, the ultimate luxury is the ability to vanish. We explore the
+                    high-altitude plateaus of Ladakh where the signal dies and the self begins.
+                </p>
+                <a href="#" class="btn-gold" style="margin-top: 3rem;">READ FULL DISPATCH</a>
             </div>
-        </article>
+        </section>
 
-        <!-- Entry 2 (Alt Layout) -->
-        <article class="journal-entry alt reveal">
-            <div class="journal-visual">
-                <img src="https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=1200&q=80"
-                    alt="Jaipur">
-            </div>
-            <div class="journal-content">
-                <div class="journal-meta">VOL. 02 // RAJASTHAN</div>
-                <h2 class="journal-title">The Private Palace</h2>
-                <p class="journal-excerpt">Beyond the hotel suite. Accessing the personal quarters of the Maharaja,
-                    where history is still living.</p>
-                <a href="#" class="btn-gold">READ DISPATCH</a>
-            </div>
-        </article>
+        <!-- Editorial Grid -->
+        <section class="journal-grid-magazine">
 
-        <!-- Entry 3 -->
-        <article class="journal-entry reveal">
-            <div class="journal-visual">
-                <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=1200&q=80"
-                    alt="Kerala">
-            </div>
-            <div class="journal-content">
-                <div class="journal-meta">VOL. 03 // THE SOUTH</div>
-                <h2 class="journal-title">Emerald Static</h2>
-                <p class="journal-excerpt">Navigating the backwaters of Alleppey in total silence. A study in slow
-                    movement.</p>
-                <a href="#" class="btn-gold">READ DISPATCH</a>
-            </div>
-        </article>
-    </section>
+            <!-- Article 1 -->
+            <article class="journal-card-mag reveal">
+                <div>
+                    <div class="mag-visual">
+                        <img src="https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=800&q=80"
+                            alt="Jaipur">
+                    </div>
+                    <span class="mag-meta">ARCHITECT'S LOG // RAJASTHAN</span>
+                    <h3 class="mag-title">The Silent Palace</h3>
+                    <p class="section-text" style="font-size: 1rem;">Why the most exclusive rooms in Jaipur are the ones
+                        that have been locked for fifty years.</p>
+                </div>
+                <a href="#" class="btn-gold-minimal" style="margin-top: 2rem;">READ ENTRY</a>
+            </article>
 
+            <!-- Article 2 -->
+            <article class="journal-card-mag reveal">
+                <div>
+                    <div class="mag-visual">
+                        <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=800&q=80"
+                            alt="Kerala">
+                    </div>
+                    <span class="mag-meta">FIELD NOTES // SOUTH</span>
+                    <h3 class="mag-title">Emerald Static</h3>
+                    <p class="section-text" style="font-size: 1rem;">Navigating the backwaters of Alleppey at 3 AM. The
+                        water has its own language if you listen.</p>
+                </div>
+                <a href="#" class="btn-gold-minimal" style="margin-top: 2rem;">READ ENTRY</a>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="journal-card-mag reveal">
+                <div>
+                    <div class="mag-visual">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"
+                            alt="Varanasi">
+                    </div>
+                    <span class="mag-meta">PHILOSOPHY // VARANASI</span>
+                    <h3 class="mag-title">Death as clarity</h3>
+                    <p class="section-text" style="font-size: 1rem;">What the burning ghats of Manikarnika teach us
+                        about living well. A study in impermanence.</p>
+                </div>
+                <a href="#" class="btn-gold-minimal" style="margin-top: 2rem;">READ ENTRY</a>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="journal-card-mag reveal">
+                <div>
+                    <div class="mag-visual">
+                        <img src="https://images.unsplash.com/photo-1518005020480-10f43bc5406b?auto=format&fit=crop&w=800&q=80"
+                            alt="Himalayas">
+                    </div>
+                    <span class="mag-meta">GEAR // ESSENTIALS</span>
+                    <h3 class="mag-title">The Kit</h3>
+                    <p class="section-text" style="font-size: 1rem;">Defining the essential carry for a 2-week isolation
+                        mandate in the Spiti Valley.</p>
+                </div>
+                <a href="#" class="btn-gold-minimal" style="margin-top: 2rem;">READ ENTRY</a>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="journal-card-mag reveal">
+                <div>
+                    <div class="mag-visual">
+                        <img src="https://images.unsplash.com/photo-1476292026003-1df8db2694b8?auto=format&fit=crop&w=800&q=80"
+                            alt="Road">
+                    </div>
+                    <span class="mag-meta">ARCHIVE // 2012</span>
+                    <h3 class="mag-title">The Long Road</h3>
+                    <p class="section-text" style="font-size: 1rem;">Reflecting on the 22,000 mile hitchhiking journey
+                        that started AERIE. The genesis of the mandate.</p>
+                </div>
+                <a href="#" class="btn-gold-minimal" style="margin-top: 2rem;">READ ENTRY</a>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="journal-card-mag reveal">
+                <div
+                    style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                    <h3 class="mag-title" style="font-size: 2.5rem; color: var(--editorial-gold);">The Archive.</h3>
+                    <p class="section-text" style="font-size: 1rem;">Access the full database of field notes dating back
+                        to 2010.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="#" class="btn-gold">ACCESS ARCHIVE</a>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
     <footer>
         <div class="footer-grid">
             <div class="footer-brand">
@@ -190,6 +257,16 @@
                     <li><a href="journal.html">Journal</a></li>
                 </ul>
             </div>
+            <div class="footer-col">
+                <h4>CONNECT</h4>
+                <ul>
+                    <li><a href="mailto:access@aerie.travel">access@aerie.travel</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2025 AERIE GLOBAL. ALL RIGHTS RESERVED.</div>
         </div>
     </footer>
 
