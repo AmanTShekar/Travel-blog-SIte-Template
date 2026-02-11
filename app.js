@@ -13,9 +13,68 @@ let isAnimating = false;
 
 function initGlobalScripts() {
     initCursor();
+    initMobileMenu(); // New Mobile Menu
     initInquireOverlay(); // Ensures overlay exists
     initPageTransitions(); // Sets up link interception
     initScrollAnimations();
+}
+
+/* ==========================================================================
+   MOBILE MENU LOGIC
+   ========================================================================== */
+function initMobileMenu() {
+    // 1. Inject Overlay HTML if missing
+    if (!document.getElementById('mobile-menu-overlay')) {
+        const menuHTML = `
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                <ul class="mobile-nav-links">
+                    <li class="mobile-nav-item"><a href="index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="about.html">About</a></li>
+                    <li class="mobile-nav-item"><a href="mandates.html">Mandates</a></li>
+                    <li class="mobile-nav-item"><a href="journal.html">Journal</a></li>
+                    <li class="mobile-nav-item"><a href="#contact">Inquire</a></li>
+                </ul>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', menuHTML);
+    }
+
+    // 2. Inject Burger Button if missing
+    const nav = document.querySelector('nav');
+    if (nav && !document.getElementById('burger-menu')) {
+        const burgerHTML = `
+            <div class="burger-menu" id="burger-menu">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+        `;
+        nav.insertAdjacentHTML('beforeend', burgerHTML);
+    }
+
+    // 3. Bind Events
+    const burger = document.getElementById('burger-menu');
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (burger && overlay) {
+        // Toggle Menu
+        burger.onclick = (e) => {
+            e.stopPropagation();
+            burger.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+        };
+
+        // Close on Link Click
+        const links = overlay.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 }
 
 function initCurrentPage() {
