@@ -5074,3 +5074,158 @@ footer {
         font-size: 2.8rem !important;
     }
 }
+/* ==========================================================================
+   GLOBAL MOBILE OPTIMIZATIONS (COMPREHENSIVE - FINAL PASS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* --- General Reset & Sizing --- */
+    html {
+        font-size: 14px; /* Slightly smaller base */
+    }
+
+    :root {
+        --spacing-page: 1.5rem; /* Reduced horizontal padding */
+    }
+
+    /* --- Typography Scaling --- */
+    h1, .hero h1, .hero-premium h1, .section-title, .journal-magazine-header h1 {
+        font-size: 2.5rem !important; /* Adjusted for smaller screens */
+        line-height: 1.1;
+    }
+
+    p, .section-text, .hero p {
+        font-size: 0.95rem !important;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    /* --- Layout Stacking --- */
+    /* Architect Dossier */
+    .architect-dossier {
+        grid-template-columns: 1fr !important;
+        padding: 4rem var(--spacing-page) !important;
+        gap: 3rem !important;
+    }
+
+    .architect-portrait {
+        height: 50vh !important;
+        order: -1; /* Image first */
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Personas */
+    .personas-section {
+        padding: 4rem var(--spacing-page) !important;
+    }
+
+    .personas-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .persona-card {
+        height: 350px !important;
+    }
+    
+    .persona-content {
+        transform: translateY(0) !important;
+        background: linear-gradient(to top, rgba(0,0,0,0.95), transparent) !important;
+        padding: 1.5rem !important;
+    }
+
+    .persona-role {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Experience Types */
+    .experience-types {
+        padding: 4rem var(--spacing-page) !important;
+    }
+
+    .exp-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .exp-card {
+        height: 350px !important;
+    }
+    
+    .exp-text {
+        transform: translateY(0) !important;
+        padding: 1.5rem !important;
+    }
+
+    .exp-desc {
+        opacity: 1 !important;
+        transform: none !important;
+        height: auto !important;
+    }
+
+    /* Journal */
+    .journal-featured {
+        height: auto !important;
+        min-height: 60vh !important;
+        padding: 4rem 0 !important;
+    }
+
+    .journal-grid-magazine {
+        grid-template-columns: 1fr !important;
+        border-top: none !important;
+    }
+
+    .journal-card-mag {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        padding: 2rem 1.5rem !important;
+        height: auto !important;
+    }
+
+    /* --- Modals & Overlays --- */
+    .inquire-modal {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+        transform: none !important;
+        max-height: 100vh !important; /* Full screen */
+        top: 0 !important; 
+        left: 0 !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inquire-body {
+        grid-template-columns: 1fr !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow-y: auto !important;
+        flex: 1;
+    }
+    
+    .inquire-form {
+        padding: 1.5rem !important;
+        border: none !important;
+    }
+
+    .inquire-sidebar {
+        display: none !important;
+    }
+
+    .inquire-close {
+        top: 1rem !important;
+        right: 1rem !important;
+        background: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
