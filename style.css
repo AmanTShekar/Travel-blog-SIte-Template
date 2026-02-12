@@ -820,8 +820,11 @@ nav.scrolled {
 }
 
 /* Trace Section */
+/* ==========================================================================
+   TRACE SECTION (Soul of the Road)
+   ========================================================================== */
 .trace-section {
-    padding: 12rem var(--spacing-page);
+    padding: 10rem var(--spacing-page);
     background: var(--bg-sec);
     position: relative;
     overflow: hidden;
@@ -830,18 +833,160 @@ nav.scrolled {
 .trace-manifesto {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8rem;
+    gap: 6rem;
     align-items: center;
+}
+
+.trace-image-stack {
+    position: relative;
+    border: 1px solid var(--border-light);
+}
+
+.trace-image-stack::after {
+    content: '';
+    position: absolute;
+    inset: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.trace-image-stack img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1);
+    transition: 0.8s var(--ease-vincent);
+}
+
+.trace-image-stack:hover img {
+    filter: grayscale(0) contrast(1);
+}
+
+.trace-content .section-label {
+    margin-bottom: 2rem;
 }
 
 .trace-quote {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
     line-height: 1.1;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    border-left: 2px solid var(--accent);
+    color: var(--text-prime);
+    margin-bottom: 2.5rem;
     padding-left: 2rem;
+    border-left: 2px solid var(--accent);
+}
+
+.trace-details {
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+/* ==========================================================================
+   EXPLORE TRIPS (Gallery Section) - NEW
+   ========================================================================== */
+.explore-trips-section {
+    padding: 10rem var(--spacing-page);
+    background: var(--bg-prime);
+}
+
+.explore-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.trips-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.trip-card {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    display: block;
+}
+
+.trip-img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.trip-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) brightness(0.8);
+    transition: all 0.8s var(--ease-vincent);
+}
+
+.trip-card:hover .trip-img img {
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.05);
+}
+
+.trip-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    transform: translateY(20px);
+    transition: all 0.6s var(--ease-vincent);
+    z-index: 2;
+}
+
+.trip-card:hover .trip-info {
+    transform: translateY(0);
+    padding-bottom: 3.5rem;
+}
+
+.trip-cat {
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.6s 0.1s var(--ease-vincent);
+}
+
+.trip-card:hover .trip-cat {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.trip-info h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #fff;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .trace-manifesto {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .trace-image-stack img {
+        height: 400px;
+    }
+
+    .trips-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trip-card {
+        height: 450px;
+    }
 }
 
 /* ==========================================================================
