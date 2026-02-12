@@ -824,7 +824,7 @@ nav.scrolled {
    TRACE SECTION (Soul of the Road)
    ========================================================================== */
 .trace-section {
-    padding: 10rem var(--spacing-page);
+    padding: 12rem var(--spacing-page);
     background: var(--bg-sec);
     position: relative;
     overflow: hidden;
@@ -832,142 +832,184 @@ nav.scrolled {
 
 .trace-manifesto {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 8rem;
     align-items: center;
 }
 
 .trace-image-stack {
     position: relative;
-    border: 1px solid var(--border-light);
-}
-
-.trace-image-stack::after {
-    content: '';
-    position: absolute;
-    inset: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-    z-index: 2;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
 }
 
 .trace-image-stack img {
     width: 100%;
-    height: 600px;
+    height: 700px;
+    /* Taller, more cinematic */
     object-fit: cover;
-    filter: grayscale(1) contrast(1.1);
-    transition: 0.8s var(--ease-vincent);
+    filter: grayscale(1) contrast(1.1) brightness(0.9);
+    transition: 1.2s var(--ease-vincent);
 }
 
+/* Double exposure effect on hover */
 .trace-image-stack:hover img {
-    filter: grayscale(0) contrast(1);
+    filter: grayscale(0) contrast(1.1) brightness(1);
 }
 
-.trace-content .section-label {
-    margin-bottom: 2rem;
+.trace-content {
+    position: relative;
+    z-index: 2;
 }
 
 .trace-quote {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    line-height: 1.1;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
     color: var(--text-prime);
     margin-bottom: 2.5rem;
-    padding-left: 2rem;
-    border-left: 2px solid var(--accent);
+    position: relative;
+}
+
+.trace-quote::before {
+    content: '“';
+    position: absolute;
+    top: -2rem;
+    left: -3rem;
+    font-size: 8rem;
+    color: var(--accent);
+    opacity: 0.2;
+    font-family: var(--font-editorial);
 }
 
 .trace-details {
-    margin-bottom: 3rem;
-    max-width: 500px;
+    margin-bottom: 4rem;
+    max-width: 550px;
+    font-size: 1.1rem;
+    color: var(--text-sec);
 }
 
 /* ==========================================================================
-   EXPLORE TRIPS (Gallery Section) - NEW
+   EXPLORE TRIPS (Gallery Section) - REFINED
    ========================================================================== */
 .explore-trips-section {
-    padding: 10rem var(--spacing-page);
+    padding: 12rem var(--spacing-page);
     background: var(--bg-prime);
+    border-top: 1px solid var(--border-light);
 }
 
 .explore-header {
-    text-align: center;
+    text-align: left;
+    /* Aligned left for editorial feel */
     margin-bottom: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .trips-showcase-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2px;
+    /* Tight architectural gap */
+    background: var(--border-light);
+    /* Gap color */
+    border: 1px solid var(--border-light);
 }
 
 .trip-card {
     position: relative;
-    height: 600px;
+    height: 65vh;
+    min-height: 600px;
     overflow: hidden;
-    border: 1px solid var(--border-light);
+    background: var(--bg-prime);
     display: block;
 }
 
 .trip-img {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    transition: transform 1.2s var(--ease-vincent);
 }
 
 .trip-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(1) brightness(0.8);
+    filter: grayscale(1) brightness(0.7);
     transition: all 0.8s var(--ease-vincent);
+}
+
+/* Zoom effect */
+.trip-card:hover .trip-img {
+    transform: scale(0.95);
+    /* Shrink slightly container */
 }
 
 .trip-card:hover .trip-img img {
     filter: grayscale(0) brightness(1);
-    transform: scale(1.05);
+    transform: scale(1.1);
+    /* Zoom image inner */
 }
 
 .trip-info {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 3rem 2rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    transform: translateY(20px);
-    transition: all 0.6s var(--ease-vincent);
-    z-index: 2;
+    inset: 0;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+    opacity: 0.8;
+    transition: 0.5s;
 }
 
 .trip-card:hover .trip-info {
-    transform: translateY(0);
-    padding-bottom: 3.5rem;
+    opacity: 1;
 }
 
 .trip-cat {
     font-family: var(--font-main);
-    font-size: 0.7rem;
-    letter-spacing: 3px;
+    font-size: 0.65rem;
+    letter-spacing: 4px;
     color: var(--accent);
     text-transform: uppercase;
+    margin-bottom: 1rem;
     display: block;
-    margin-bottom: 0.5rem;
+    transform: translateY(20px);
     opacity: 0;
-    transform: translateY(10px);
-    transition: 0.6s 0.1s var(--ease-vincent);
-}
-
-.trip-card:hover .trip-cat {
-    opacity: 1;
-    transform: translateY(0);
+    transition: 0.6s var(--ease-vincent);
 }
 
 .trip-info h3 {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #fff;
     margin: 0;
+    line-height: 1.1;
+    transform: translateY(20px);
+    transition: 0.6s 0.1s var(--ease-vincent);
+}
+
+.trip-card:hover .trip-cat,
+.trip-card:hover h3 {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Border Reveal on Hover */
+.trip-card::after {
+    content: '';
+    position: absolute;
+    inset: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.trip-card:hover::after {
+    opacity: 1;
+    inset: 1rem;
 }
 
 @media (max-width: 1024px) {
@@ -977,15 +1019,26 @@ nav.scrolled {
     }
 
     .trace-image-stack img {
-        height: 400px;
+        height: 50vh;
+    }
+
+    .explore-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
     }
 
     .trips-showcase-grid {
         grid-template-columns: 1fr;
+        background: transparent;
+        gap: 3rem;
+        border: none;
     }
 
     .trip-card {
-        height: 450px;
+        height: 500px;
+        min-height: auto;
+        border: 1px solid var(--border-light);
     }
 }
 
