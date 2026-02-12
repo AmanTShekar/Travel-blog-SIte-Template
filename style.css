@@ -5074,27 +5074,42 @@ footer {
         font-size: 2.8rem !important;
     }
 }
+
 /* ==========================================================================
    GLOBAL MOBILE OPTIMIZATIONS (COMPREHENSIVE - FINAL PASS)
    ========================================================================== */
 @media (max-width: 768px) {
+
     /* --- General Reset & Sizing --- */
     html {
-        font-size: 14px; /* Slightly smaller base */
+        font-size: 14px;
+        /* Slightly smaller base */
     }
 
     :root {
-        --spacing-page: 1.5rem; /* Reduced horizontal padding */
+        --spacing-page: 5vw;
+        /* Fluid horizontal padding */
     }
 
     /* --- Typography Scaling --- */
-    h1, .hero h1, .hero-premium h1, .section-title, .journal-magazine-header h1 {
-        font-size: 2.5rem !important; /* Adjusted for smaller screens */
+    h1,
+    .hero h1,
+    .hero-premium h1,
+    .section-title,
+    .journal-magazine-header h1 {
+        font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+        /* Responsize clamp */
         line-height: 1.1;
     }
 
-    p, .section-text, .hero p {
-        font-size: 0.95rem !important;
+    h2 {
+        font-size: 2rem !important;
+    }
+
+    p,
+    .section-text,
+    .hero p {
+        font-size: 1rem !important;
         line-height: 1.6;
         max-width: 100%;
     }
@@ -5104,17 +5119,23 @@ footer {
     .architect-dossier {
         grid-template-columns: 1fr !important;
         padding: 4rem var(--spacing-page) !important;
-        gap: 3rem !important;
+        gap: 2rem !important;
     }
 
     .architect-portrait {
-        height: 50vh !important;
-        order: -1; /* Image first */
+        height: 45vh !important;
+        order: -1;
+        /* Image first */
     }
 
     .stats-grid {
         grid-template-columns: 1fr 1fr !important;
         gap: 1.5rem !important;
+        margin-top: 2rem;
+    }
+
+    .stat-item h4 {
+        font-size: 2rem !important;
     }
 
     /* Personas */
@@ -5124,22 +5145,26 @@ footer {
 
     .personas-grid {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
+        gap: 2rem !important;
     }
 
     .persona-card {
-        height: 350px !important;
+        height: 60vh !important;
+        /* Taller for mobile impact */
+        max-height: 500px;
     }
-    
+
     .persona-content {
         transform: translateY(0) !important;
-        background: linear-gradient(to top, rgba(0,0,0,0.95), transparent) !important;
-        padding: 1.5rem !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent) !important;
+        padding: 2rem !important;
+        opacity: 1 !important;
     }
 
     .persona-role {
-        opacity: 1 !important;
+        opacity: 0.8 !important;
         transform: none !important;
+        margin-bottom: 0.5rem;
     }
 
     /* Experience Types */
@@ -5153,25 +5178,30 @@ footer {
     }
 
     .exp-card {
-        height: 350px !important;
+        height: 50vh !important;
+        max-height: 400px;
     }
-    
+
     .exp-text {
         transform: translateY(0) !important;
-        padding: 1.5rem !important;
+        padding: 2rem !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent) !important;
     }
 
     .exp-desc {
-        opacity: 1 !important;
+        opacity: 0.9 !important;
         transform: none !important;
         height: auto !important;
+        margin-top: 0.5rem;
     }
 
     /* Journal */
     .journal-featured {
         height: auto !important;
         min-height: 60vh !important;
-        padding: 4rem 0 !important;
+        padding: 6rem var(--spacing-page) 4rem !important;
+        display: flex;
+        align-items: flex-end;
     }
 
     .journal-grid-magazine {
@@ -5181,9 +5211,10 @@ footer {
 
     .journal-card-mag {
         border-right: none !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-        padding: 2rem 1.5rem !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding: 3rem 1.5rem !important;
         height: auto !important;
+        min-height: auto !important;
     }
 
     /* --- Modals & Overlays --- */
@@ -5192,11 +5223,13 @@ footer {
         height: 100% !important;
         border-radius: 0 !important;
         transform: none !important;
-        max-height: 100vh !important; /* Full screen */
-        top: 0 !important; 
+        max-height: 100vh !important;
+        /* Full screen */
+        top: 0 !important;
         left: 0 !important;
         display: flex;
         flex-direction: column;
+        margin: 0 !important;
     }
 
     .inquire-body {
@@ -5207,10 +5240,15 @@ footer {
         overflow-y: auto !important;
         flex: 1;
     }
-    
+
     .inquire-form {
-        padding: 1.5rem !important;
+        padding: 2rem !important;
         border: none !important;
+        min-height: auto !important;
+    }
+
+    .inquire-header {
+        padding: 2rem 2rem 0 !important;
     }
 
     .inquire-sidebar {
@@ -5218,14 +5256,33 @@ footer {
     }
 
     .inquire-close {
-        top: 1rem !important;
-        right: 1rem !important;
-        background: rgba(0,0,0,0.5);
+        top: 1.5rem !important;
+        right: 1.5rem !important;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 2000;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+
+    /* --- Footer --- */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        text-align: left;
+    }
+
+    footer {
+        padding: 4rem var(--spacing-page) !important;
     }
 }
