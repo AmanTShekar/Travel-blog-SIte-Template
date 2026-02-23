@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AERIE | Indian Soul • Dubai Standards</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
@@ -29,7 +30,10 @@
     </nav>
 
     <main id="app-content">
-        <header class="hero">
+        <header class="hero parallax-section">
+            <div class="parallax-bg"
+                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1), #050505), url('https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=2048&auto=format&fit=crop');"
+                data-speed="0.2"></div>
             <h1 class="reveal">THE PURSUIT <br><span class="editorial" style="color: var(--accent);">OF FEELING.</span>
             </h1>
             <p class="reveal">We don't just bridge borders. We architect
@@ -88,34 +92,44 @@
             </div>
         </section>
 
-        <!-- Core Beliefs (Compact) -->
-        <!-- Core Beliefs (Sleek Sub-section) -->
-        <section class="core-beliefs-compact reveal">
-            <div class="beliefs-container">
-                <div class="compact-header">
-                    <span class="section-label">THE FOUNDATION</span>
-                    <h2 class="section-title">Core <br><span class="editorial">Beliefs</span></h2>
-                    <p class="section-text"
-                        style="max-width: 320px; margin-top: 1.5rem; color: var(--text-sec); font-size: 1.1rem; line-height: 1.6;">
-                        Luxury isn't about comfort. It's about access to the inaccessible.</p>
-                </div>
+        <!-- THE CANVAS OF INDIA (Cinematic Showcase) -->
+        <section class="india-showcase">
+            <header class="showcase-header">
+                <span class="section-label reveal">THE CANVAS</span>
+                <h2 class="section-title reveal" style="margin-bottom: 2rem;">India <br><span
+                        class="editorial-gold">Unveiled.</span></h2>
+            </header>
 
-                <div class="beliefs-grid">
-                    <div class="belief-card">
-                        <span class="belief-num">01 // PHILOSOPHY</span>
-                        <h3>Rewire</h3>
-                        <p>Architecting experiences that rewire how you see the world.</p>
-                    </div>
-                    <div class="belief-card">
-                        <span class="belief-num">02 // MANDATE</span>
-                        <h3>Refinement</h3>
-                        <p>India's essence, surgically extracted and globally refined.</p>
-                    </div>
-                    <div class="belief-card">
-                        <span class="belief-num">03 // APPROACH</span>
-                        <h3>Access</h3>
-                        <p>True luxury begins where the paved road ends.</p>
-                    </div>
+            <div class="location-panel" style="z-index: 1;">
+                <div class="pan-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&q=80&w=2000');">
+                </div>
+                <div class="location-overlay">
+                    <span class="location-coord">26.9124° N, 75.7873° E</span>
+                    <h3 class="location-name">Rajasthan</h3>
+                    <p class="location-desc">The Golden Protocol. Forts that whisper history.</p>
+                </div>
+            </div>
+
+            <div class="location-panel" style="z-index: 2;">
+                <div class="pan-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1561359313-0639aad49ca6?auto=format&fit=crop&q=80&w=2000');">
+                </div>
+                <div class="location-overlay">
+                    <span class="location-coord">25.3176° N, 82.9739° E</span>
+                    <h3 class="location-name">Varanasi</h3>
+                    <p class="location-desc">The River Archive. Where life and death dance.</p>
+                </div>
+            </div>
+
+            <div class="location-panel" style="z-index: 3;">
+                <div class="pan-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=80&w=2000');">
+                </div>
+                <div class="location-overlay">
+                    <span class="location-coord">10.8505° N, 76.2711° E</span>
+                    <h3 class="location-name">Kerala</h3>
+                    <p class="location-desc">The Emerald Silence. Backwaters of time.</p>
                 </div>
             </div>
         </section>
@@ -146,77 +160,94 @@
             </div>
         </section>
 
-        <!-- Explore Our Trips Section (New) -->
+        <!-- CURATED FOR THE SOUL (3D Cinematic) -->
         <section class="explore-trips-section">
-            <div class="explore-header reveal">
+            <div class="explore-trips-bg"></div>
+
+            <div class="explore-header">
                 <span class="section-label">CURATED FOR THE SOUL</span>
                 <h2 class="section-title">Remarkable experiences <br><span class="editorial">to inspire the mind.</span>
                 </h2>
-                <p class="section-text"
-                    style="max-width: 500px; margin: 2rem auto; color: var(--text-sec); font-size: 1.1rem; line-height: 1.6;">
-                    These are not vacations. They are carefully designed interventions. From the high peaks of Ladakh to
-                    the
-                    royal courts of Rajasthan, each journey is a chapter waiting to be written.
-                </p>
             </div>
 
-            <div class="trips-showcase-grid reveal">
-                <!-- Card 1 -->
+            <div class="trips-showcase-grid">
+                <!-- Card 1: Ladakh -->
                 <a href="mandates.html" class="trip-card">
-                    <div class="trip-img">
-                        <img src="https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=800&q=80"
-                            alt="Ladakh">
-                    </div>
-                    <div class="trip-info">
-                        <span class="trip-cat">HIMALAYAS</span>
-                        <h3>The High Altitude Silence</h3>
+                    <div class="card-3d-layer">
+                        <div class="trip-img">
+                            <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&q=80&w=1000"
+                                alt="Ladakh Mountain Scenery">
+                        </div>
+                        <div class="trip-info">
+                            <span class="trip-cat">HIMALAYAS</span>
+                            <h3>The High Altitude Silence</h3>
+                            <p class="trip-description">An expedition through the high-altitude desert, where ancient
+                                monasteries meet obsidian cliffs.</p>
+                            <span class="trip-link">DISCOVER THE ODYSSEY</span>
+                        </div>
+                        <div class="card-shine"></div>
                     </div>
                 </a>
 
-                <!-- Card 2 -->
+                <!-- Card 2: Rajasthan -->
                 <a href="mandates.html" class="trip-card">
-                    <div class="trip-img">
-                        <img src="https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=800&q=80"
-                            alt="Rajasthan">
-                    </div>
-                    <div class="trip-info">
-                        <span class="trip-cat">RAJASTHAN</span>
-                        <h3>The Royal Desert</h3>
+                    <div class="card-3d-layer">
+                        <div class="trip-img">
+                            <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&q=80&w=1000"
+                                alt="Rajasthan Palace Architecture">
+                        </div>
+                        <div class="trip-info">
+                            <span class="trip-cat">RAJASTHAN</span>
+                            <h3>The Golden Protocol</h3>
+                            <p class="trip-description">Immerse yourself in regal heritage. Private stays in
+                                15th-century forts and desert safaris.</p>
+                            <span class="trip-link">DISCOVER THE ODYSSEY</span>
+                        </div>
+                        <div class="card-shine"></div>
                     </div>
                 </a>
 
-                <!-- Card 3 -->
+                <!-- Card 3: Kerala -->
                 <a href="mandates.html" class="trip-card">
-                    <div class="trip-img">
-                        <img src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=800&q=80"
-                            alt="Kerala">
-                    </div>
-                    <div class="trip-info">
-                        <span class="trip-cat">KERALA</span>
-                        <h3>The Emerald Backwaters</h3>
+                    <div class="card-3d-layer">
+                        <div class="trip-img">
+                            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=80&w=1000"
+                                alt="Kerala Backwaters Boat">
+                        </div>
+                        <div class="trip-info">
+                            <span class="trip-cat">SOUTH INDIA</span>
+                            <h3>The Emerald Silence</h3>
+                            <p class="trip-description">Navigate tranquil backwaters aboard a private kettuvalam. A
+                                slow-paced immersion into nature.</p>
+                            <span class="trip-link">DISCOVER THE ODYSSEY</span>
+                        </div>
+                        <div class="card-shine"></div>
                     </div>
                 </a>
             </div>
-            <div style="text-align: center; margin-top: 4rem;">
+
+            <div class="explore-cta-reveal" style="text-align: center;">
                 <a href="mandates.html" class="btn-gold">VIEW ALL MANDATES</a>
             </div>
         </section>
 
         <!-- The Pursuit of Feeling Manifesto -->
         <section class="manifesto-section">
-            <div class="manifesto-container reveal">
-                <span class="section-label">THE PHILOSOPHY</span>
-                <h2 class="manifesto-title">It’s not where you want to go. <br><span class="manifesto-highlight">It’s
-                        how
-                        you want to feel.</span></h2>
-                <div class="manifesto-body">
+            <div class="manifesto-minimal">
+                <div class="reveal">
+                    <span class="section-label">THE PHILOSOPHY</span>
+                    <h2 class="manifesto-title">It’s not where you want to go. <br><span class="editorial-gold">It’s how
+                            you want to feel.</span></h2>
+                </div>
+                <div class="manifesto-body reveal" style="transition-delay: 0.2s;">
                     <p>For us, travel isn't a checklist. It's a precise emotional calibration. A breathless ascent in
-                        the
-                        Andes. A silent prayer in Varanasi. A surge of adrenaline in the skeleton coast.</p>
+                        the Andes. A silent prayer in Varanasi. A surge of adrenaline in the skeleton coast.</p>
                     <p>We don't just plan logistics. We architect the emotional arc of your journey. From the initial
                         anticipation to the lasting afterglow.</p>
+                    <div style="margin-top: 3rem;">
+                        <a href="about.html" class="btn-gold">DISCOVER OUR ETHOS</a>
+                    </div>
                 </div>
-                <a href="about.html" class="btn-gold-minimal">DISCOVER OUR ETHOS</a>
             </div>
         </section>
 
@@ -395,6 +426,11 @@
         </div>
     </footer>
 
+    <!-- GSAP for Cinematic Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
     <script src="app.js"></script>
 </body>
 

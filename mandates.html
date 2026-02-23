@@ -5,151 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mandates | Aerie Global</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="mandates.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
         rel="stylesheet">
     <style>
-        /* Page-Specific Styles for Mandates */
-        .mandates-hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: var(--bg-prime);
-            position: relative;
-            overflow: hidden;
-            padding-top: 10vh;
-            /* Push content down slightly visually */
-        }
-
-        .explorer-container {
-            display: flex;
-            height: 100vh;
-            background: var(--bg-prime);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .explorer-list {
-            width: 30%;
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            z-index: 2;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .state-item {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            color: var(--text-sec);
-            margin-bottom: 2rem;
-            cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-        }
-
-        .state-item:hover,
-        .state-item.active {
-            color: var(--accent);
-            transform: translateX(20px);
-        }
-
-        .explorer-visual {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-
-        .visual-layer {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .visual-layer.active {
-            opacity: 0.6;
-        }
-
-        .mandate-card-reveal {
-            position: absolute;
-            bottom: 4rem;
-            right: 4rem;
-            width: 400px;
-            background: var(--bg-sec);
-            border: 1px solid var(--border-light);
-            padding: 2rem;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 0.6s var(--ease-vincent);
-            z-index: 3;
-        }
-
-        .mandate-card-reveal.active {
-            transform: translateY(0);
+        /* Simplified SPA specific corrections if any */
+        #app-content {
             opacity: 1;
-        }
-
-        /* Grid */
-        .all-mandates {
-            padding: 8rem var(--spacing-page);
-            background: var(--bg-sec);
-        }
-
-        @media (max-width: 900px) {
-            .mandates-hero {
-                height: 50vh;
-            }
-
-            .explorer-container {
-                flex-direction: column;
-                height: auto;
-                min-height: 100vh;
-            }
-
-            .explorer-list {
-                width: 100%;
-                height: auto;
-                padding: 2rem var(--spacing-page);
-                position: relative;
-                background: var(--bg-prime);
-            }
-
-            .explorer-visual {
-                position: relative;
-                height: 50vh;
-                width: 100%;
-            }
-
-            .mandate-card-reveal {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                width: 100%;
-                transform: none;
-                margin-top: -4rem;
-                /* Overlap slightly or just stack */
-                margin-top: 0;
-                border: none;
-                background: rgba(10, 10, 10, 0.95);
-            }
-
-            .mandate-card-reveal.active {
-                transform: none;
-            }
-
-            .state-item {
-                font-size: 2rem;
-            }
+            transition: opacity 0.5s ease;
         }
     </style>
 </head>
@@ -171,15 +37,14 @@
 
     <main id="app-content">
         <!-- New Hero -->
-        <section class="mandates-hero" style="height: 100vh; position: relative;">
+        <section class="mandates-hero">
             <div class="hero-bg"
-                style="background-image: url('https://images.unsplash.com/photo-1518005020480-10f43bc5406b?auto=format&fit=crop&w=2000&q=80'); filter: brightness(0.4);">
+                style="background-image: url('https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=2500&q=80');">
             </div>
-            <div class="hero-contentreveal" style="z-index: 2; text-align: center;">
+            <div class="hero-content reveal reveal-stagger">
                 <span class="section-label reveal">THE COLLECTION</span>
-                <h1 class="reveal section-title" style="font-size: 5rem; margin-bottom: 2rem;">Curated <br><span
-                        class="editorial-gold">Interventions.</span></h1>
-                <p class="section-text reveal" style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.8);">
+                <h1 class="reveal section-title">Curated <br><span class="editorial-gold">Interventions.</span></h1>
+                <p class="section-text reveal">
                     We do not sell vacations. We architect trajectories. Each mandate is a precision-engineered
                     experience designed to alter your internal state.
                 </p>
@@ -187,64 +52,120 @@
         </section>
 
         <!-- Mood Grid (Black Tomato Style) -->
-        <section class="mandates-mood-grid">
+        <section class="mandates-mood-grid horizontal-scroll-section">
+            <div class="horizontal-container">
+                <!-- Card 1: Silence -->
+                <div class="mood-card">
+                    <div class="mood-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=1200&q=80');">
+                    </div>
+                    <div class="mood-content">
+                        <span class="section-label" style="color: var(--accent);">01 // ATMOSPHERE</span>
+                        <h3 class="mood-title">Silence</h3>
+                        <p class="mood-desc section-text">High-altitude plateaus where the air is thin and the mind is
+                            clear. Ladakh. Spiti. Tibet.</p>
+                    </div>
+                    <a href="#silence" class="full-link"></a>
+                </div>
 
-            <!-- Card 1: Silence -->
-            <div class="mood-card">
-                <div class="mood-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=1200&q=80');">
+                <!-- Card 2: Power -->
+                <div class="mood-card">
+                    <div class="mood-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=1200&q=80');">
+                    </div>
+                    <div class="mood-content">
+                        <span class="section-label" style="color: var(--accent);">02 // LEGACY</span>
+                        <h3 class="mood-title">Power</h3>
+                        <p class="mood-desc section-text">Walk the halls of living monarchs. Private access to the forts
+                            and
+                            palaces of Rajasthan.</p>
+                    </div>
+                    <a href="#power" class="full-link"></a>
                 </div>
-                <div class="mood-content">
-                    <span class="section-label" style="color: var(--accent);">01 // ATMOSPHERE</span>
-                    <h3 class="mood-title">Silence</h3>
-                    <p class="mood-desc section-text">High-altitude plateaus where the air is thin and the mind is
-                        clear. Ladakh. Spiti. Tibet.</p>
+
+                <!-- Card 3: Origins -->
+                <div class="mood-card">
+                    <div class="mood-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');">
+                    </div>
+                    <div class="mood-content">
+                        <span class="section-label" style="color: var(--accent);">03 // SPIRIT</span>
+                        <h3 class="mood-title">Origins</h3>
+                        <p class="mood-desc section-text">The oldest living cities. Rituals that predate history.
+                            Varanasi.
+                            Madurai. Hampi.</p>
+                    </div>
+                    <a href="#origins" class="full-link"></a>
                 </div>
-                <a href="#silence" class="full-link"></a>
+
+                <!-- Card 4: Wild -->
+                <div class="mood-card">
+                    <div class="mood-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=1200&q=80');">
+                    </div>
+                    <div class="mood-content">
+                        <span class="section-label" style="color: var(--accent);">04 // PRIMAL</span>
+                        <h3 class="mood-title">Wild</h3>
+                        <p class="mood-desc section-text">Deep jungle tracking. The silent backwaters. Where nature
+                            dictates
+                            the rhythm.</p>
+                    </div>
+                    <a href="#wild" class="full-link"></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Mandate Explorer Section (Matches app.js logic) -->
+        <section class="explorer-container">
+            <div class="explorer-list">
+                <span class="section-label" style="margin-bottom: 2rem;">STATE EXPLORER</span>
+                <div class="state-item active" data-target="ladakh">01 // LADAKH</div>
+                <div class="state-item" data-target="rajasthan">02 // RAJASTHAN</div>
+                <div class="state-item" data-target="varanasi">03 // VARANASI</div>
+                <div class="state-item" data-target="kerala">04 // KERALA</div>
             </div>
 
-            <!-- Card 2: Power -->
-            <div class="mood-card">
-                <div class="mood-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=1200&q=80');">
+            <div class="explorer-visual">
+                <!-- Background Layers -->
+                <div class="visual-layer active" id="bg-ladakh"
+                    style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=2000&q=80')">
                 </div>
-                <div class="mood-content">
-                    <span class="section-label" style="color: var(--accent);">02 // LEGACY</span>
-                    <h3 class="mood-title">Power</h3>
-                    <p class="mood-desc section-text">Walk the halls of living monarchs. Private access to the forts and
-                        palaces of Rajasthan.</p>
+                <div class="visual-layer" id="bg-rajasthan"
+                    style="background-image: url('https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=2000&q=80')">
                 </div>
-                <a href="#power" class="full-link"></a>
-            </div>
+                <div class="visual-layer" id="bg-varanasi"
+                    style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=80')">
+                </div>
+                <div class="visual-layer" id="bg-kerala"
+                    style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=2000&q=80')">
+                </div>
 
-            <!-- Card 3: Origins -->
-            <div class="mood-card">
-                <div class="mood-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');">
+                <!-- Info Cards -->
+                <div class="mandate-card-reveal active" id="card-ladakh">
+                    <span class="section-label">ATMOSPHERE: SILENCE</span>
+                    <h3>The Frozen Mandate</h3>
+                    <p class="section-text">High-altitude extraction where oxygen is the real luxury. Sourcing the
+                        silence between the peaks.</p>
                 </div>
-                <div class="mood-content">
-                    <span class="section-label" style="color: var(--accent);">03 // SPIRIT</span>
-                    <h3 class="mood-title">Origins</h3>
-                    <p class="mood-desc section-text">The oldest living cities. Rituals that predate history. Varanasi.
-                        Madurai. Hampi.</p>
+                <div class="mandate-card-reveal" id="card-rajasthan">
+                    <span class="section-label">ATMOSPHERE: POWER</span>
+                    <h3>The Golden Protocol</h3>
+                    <p class="section-text">Private inheritance in the desert's most guarded echoes. Living within the
+                        fortress walls.</p>
                 </div>
-                <a href="#origins" class="full-link"></a>
+                <div class="mandate-card-reveal" id="card-varanasi">
+                    <span class="section-label">ATMOSPHERE: ORIGINS</span>
+                    <h3>The River Archive</h3>
+                    <p class="section-text">Rituals performed at the intersection of life and death. Decoding the oldest
+                        living geography.</p>
+                </div>
+                <div class="mandate-card-reveal" id="card-kerala">
+                    <span class="section-label">ATMOSPHERE: WILD</span>
+                    <h3>Tropical Roots</h3>
+                    <p class="section-text">Navigating the emerald gardens where trade winds carry empires. The
+                        architecture of deep green.</p>
+                </div>
             </div>
-
-            <!-- Card 4: Wild -->
-            <div class="mood-card">
-                <div class="mood-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=1200&q=80');">
-                </div>
-                <div class="mood-content">
-                    <span class="section-label" style="color: var(--accent);">04 // PRIMAL</span>
-                    <h3 class="mood-title">Wild</h3>
-                    <p class="mood-desc section-text">Deep jungle tracking. The silent backwaters. Where nature dictates
-                        the rhythm.</p>
-                </div>
-                <a href="#wild" class="full-link"></a>
-            </div>
-
         </section>
 
         <!-- Signature Mandates -->
@@ -354,6 +275,10 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
     <script src="app.js"></script>
 
 </body>

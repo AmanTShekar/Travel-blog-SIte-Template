@@ -5,106 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal | Aerie Global</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="journal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
         rel="stylesheet">
-    <style>
-        /* Journal Specific Styles */
-        .journal-hero {
-            padding: 12rem var(--spacing-page) 6rem;
-            text-align: center;
-            background: var(--bg-prime);
-        }
-
-        .journal-grid {
-            padding: 4rem var(--spacing-page);
-            background: var(--bg-sec);
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 6rem;
-        }
-
-        .journal-entry {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: center;
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 6rem;
-        }
-
-        .journal-visual {
-            position: relative;
-            overflow: hidden;
-            height: 50vh;
-            border: 1px solid var(--border-light);
-        }
-
-        .journal-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.8s;
-        }
-
-        /* The Lens Effect Placeholder */
-        .lens-overlay {
-            position: absolute;
-            inset: 0;
-            background: url('https://www.transparenttextures.com/patterns/noise.png');
-            opacity: 0.4;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        .journal-entry:hover .journal-visual img {
-            transform: scale(1.03);
-        }
-
-        .journal-meta {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            color: var(--accent);
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .journal-title {
-            font-family: var(--font-heading);
-            font-size: 3rem;
-            color: var(--text-prime);
-            margin-bottom: 2rem;
-        }
-
-        .journal-excerpt {
-            font-family: var(--font-editorial);
-            font-size: 1.1rem;
-            color: var(--text-sec);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        @media (min-width: 1024px) {
-            .journal-entry {
-                grid-template-columns: 1.5fr 1fr;
-            }
-
-            .journal-entry.alt {
-                grid-template-columns: 1fr 1.5fr;
-            }
-
-            .journal-entry.alt .journal-content {
-                order: -1;
-                text-align: right;
-            }
-
-            .journal-entry.alt .journal-excerpt {
-                margin-left: auto;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -270,6 +176,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
     <script src="app.js"></script>
 </body>
 
