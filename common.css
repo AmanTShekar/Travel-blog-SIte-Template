@@ -174,7 +174,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 1010;
+    /* Boosted z-index so 'close menu' burger stays on top of overlay (1001) */
     transition: all 0.5s var(--ease-vincent);
     background: rgba(5, 5, 5, 0.05);
     backdrop-filter: blur(10px);
@@ -261,16 +262,22 @@ nav.scrolled {
 .burger-menu {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 12px;
+    justify-content: space-around;
+    /* Better distribution */
+    width: 44px;
+    /* Standards-compliant touch target */
+    height: 44px;
+    /* Standards-compliant touch target */
+    padding: 12px 7px;
+    /* Internal hit area padding */
     cursor: pointer;
     z-index: 1005;
 }
 
 .burger-line {
     width: 100%;
-    height: 1px;
+    height: 2px;
+    /* Slightly thicker for visibility */
     background: #fff;
     transition: all 0.3s ease;
 }
@@ -517,7 +524,7 @@ body {
     background: #080808;
     /* Solid dark color for better contrast/readability */
     border-left: 1px solid var(--accent);
-    transform: translateX(100%);
+    transform: translateX(101%);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: auto;
     /* MUST be auto to capture clicks */
@@ -535,7 +542,7 @@ body {
 }
 
 .inquire-header {
-    padding: 5rem 4rem 3rem 4rem;
+    padding: clamp(3rem, 10vw, 5rem) clamp(2rem, 5vw, 4rem) 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     /* Clean gradient - no tacky colors */

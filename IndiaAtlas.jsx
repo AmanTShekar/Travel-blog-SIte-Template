@@ -22,7 +22,11 @@ const IndiaAtlas = ({ onStateHover, onStateClick, activeStateId }) => {
                 className={styles.indiaAtlasFull}
                 viewBox="0 0 612 700"
                 xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Interactive map of Indian states"
             >
+                <title>Map of India</title>
+                <desc>Interactive map highlighting states explored in the journey. Click on states for more details.</desc>
                 <g id="states-group">
                     {states.map(state => (
                         <path
@@ -33,6 +37,15 @@ const IndiaAtlas = ({ onStateHover, onStateClick, activeStateId }) => {
                             onClick={() => onStateClick(state.id)}
                             onMouseEnter={() => onStateHover(state.id)}
                             d={state.d}
+                            role="button"
+                            tabIndex="0"
+                            aria-label={`Explore ${state.name}`}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    onStateClick(state.id);
+                                }
+                            }}
                         />
                     ))}
                 </g>
@@ -46,10 +59,11 @@ const IndiaAtlas = ({ onStateHover, onStateClick, activeStateId }) => {
                     stroke="rgba(212,175,55,0.3)"
                     strokeWidth="2"
                     strokeDasharray="5,5"
+                    aria-hidden="true"
                 />
 
                 {/* Precision Markers */}
-                <g className={styles.coordinateMarkers}>
+                <g className={styles.coordinateMarkers} aria-hidden="true">
                     <circle cx="160" cy="60" r="4" fill="#d4af37" />
                     <circle cx="150" cy="240" r="4" fill="#d4af37" />
                     <circle cx="335" cy="280" r="4" fill="#d4af37" />

@@ -71,7 +71,7 @@ function initMobileMenu() {
     const nav = document.querySelector('nav');
     if (nav && !document.getElementById('burger-menu')) {
         const burgerHTML = `
-            <div class="burger-menu" id="burger-menu">
+            <div class="burger-menu" id="burger-menu" role="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu-overlay">
                 <div class="burger-line"></div>
                 <div class="burger-line"></div>
                 <div class="burger-line"></div>
@@ -91,7 +91,10 @@ function initMobileMenu() {
             burger.classList.toggle('open');
             overlay.classList.toggle('active');
             overlay.classList.toggle('open');
-            document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+            const isOpen = overlay.classList.contains('open');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            burger.setAttribute('aria-expanded', isOpen);
+            burger.setAttribute('aria-label', isOpen ? 'Close Menu' : 'Menu');
         };
 
         // Close on Link Click
@@ -315,6 +318,7 @@ function initAboutPage() {
     const states = document.querySelectorAll('.state-layer');
     const coordinates = document.querySelectorAll('.coordinate-marker');
     const storyContent = document.getElementById('storyContent') || document.getElementById('story-content');
+    const journeyPath = document.querySelector('.journey-path-animated');
 
     // Map Data with images, stats, and richer narrative
     const stateLogs = {
@@ -450,7 +454,9 @@ function initAboutPage() {
                 </div>
                 <h3 class="story-title">${title}</h3>
                 <div class="story-divider"></div>
-                <p class="story-quote">"${data.log}"</p>
+                <div class="story-quote-wrap">
+                    <p class="story-quote">${data.log}</p>
+                </div>
                 <div class="story-stats-grid">
                     <div class="story-stat">
                         <span class="stat-value">${stats.altitude}</span>
@@ -466,7 +472,7 @@ function initAboutPage() {
                     </div>
                 </div>
                 <div class="story-actions">
-                    <a href="mandates.html" class="btn-gold-minimal">VIEW FULL MANDATE →</a>
+                    <a href="#" class="btn-gold-minimal">ACCESS MANDATE ARCHIVE</a>
                 </div>
             `;
             }
@@ -484,10 +490,15 @@ function initAboutPage() {
         const activeMarker = document.querySelector(`.coordinate-marker[data-location="${id}"]`);
         if (activeMarker) activeMarker.classList.add('active');
 
-        // Reset active states for milestones
-        document.querySelectorAll('.mandate-milestone').forEach(m => m.classList.remove('active'));
-        const activeMilestone = document.querySelector(`.mandate-milestone[data-id="${id}"]`);
-        if (activeMilestone) activeMilestone.classList.add('active');
+        // Reset active states for milestones (Bottom Nav)
+        document.querySelectorAll('.loc-btn').forEach(m => m.classList.remove('active'));
+        const activeLocBtn = document.querySelector(`.loc-btn[data-id="${id}"]`);
+        if (activeLocBtn) activeLocBtn.classList.add('active');
+
+        // Sync Internal Sidebar Nav
+        document.querySelectorAll('.side-nav-btn').forEach(b => b.classList.remove('active'));
+        const activeSideBtn = document.querySelector(`.side-nav-btn[data-id="${id}"]`);
+        if (activeSideBtn) activeSideBtn.classList.add('active');
     }
 
     // Expose for inline HTML handlers
@@ -523,19 +534,11 @@ function initAboutPage() {
         });
     });
 
-    // Location Nav Buttons (clickable access)
-    const locBtns = document.querySelectorAll('.loc-btn');
-    const journeyPath = document.getElementById('journeyPathFull');
 
-    locBtns.forEach(btn => {
+    // Sidebar Internal Nav Listeners
+    document.querySelectorAll('.side-nav-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            locBtns.forEach(b => {
-                b.classList.remove('active');
-                b.setAttribute('aria-selected', 'false');
-            });
-            btn.classList.add('active');
-            btn.setAttribute('aria-selected', 'true');
-            if (btn.dataset.id) updateStoryPanel(btn.dataset.id);
+            updateStoryPanel(btn.dataset.id);
         });
     });
 
@@ -566,9 +569,84 @@ function initAboutPage() {
         });
     });
 
-    // Auto-select first location on load
-    if (locBtns.length) {
-        setTimeout(() => updateStoryPanel('jk'), 800);
+    // Auto-select first location on load (LEH // FROZEN MANDATE)
+    const sideBtns = document.querySelectorAll('.side-nav-btn');
+    if (sideBtns.length) {
+        // Immediate trigger
+        setTimeout(() => updateStoryPanel('jk'), 300);
+
+        // Multiple safety fallbacks for varying DOM speeds
+        [1000, 2500, 4500].forEach(delay => {
+            setTimeout(() => {
+                if (storyContent && (storyContent.innerHTML.includes('SELECT A COORDINATE') || !storyContent.innerHTML.includes('story-hero-img'))) {
+                    updateStoryPanel('jk');
+                }
+            }, delay);
+        });
+    }
+
+    // --- Drag to Scroll Ergonomics ---
+    const scrollContainer = document.querySelector('.story-scroll-area');
+    if (scrollContainer) {
+        let isPressed = false;
+        let yStart;
+        let scrollStart;
+
+        scrollContainer.addEventListener('mousedown', (e) => {
+            isPressed = true;
+            yStart = e.pageY - scrollContainer.offsetTop;
+            scrollStart = scrollContainer.scrollTop;
+            scrollContainer.style.cursor = 'grabbing';
+            scrollContainer.style.userSelect = 'none'; // Prevent text selection while dragging
+        });
+
+        window.addEventListener('mouseup', () => {
+            isPressed = false;
+            if (scrollContainer) {
+                scrollContainer.style.cursor = 'grab';
+                scrollContainer.style.userSelect = 'auto';
+            }
+        });
+
+        scrollContainer.addEventListener('mousemove', (e) => {
+            if (!isPressed) return;
+            e.preventDefault();
+            const yCurrent = e.pageY - scrollContainer.offsetTop;
+            const distance = (yCurrent - yStart) * 2.0; // Snappier drag sensitivity
+            scrollContainer.scrollTop = scrollStart - distance;
+        });
+    }
+
+    // --- ISOLATED HOVER SCROLLING FOR ATLAS STORY PANEL ---
+    const storyPanel = document.querySelector('.story-panel-luxe');
+    if (storyPanel) {
+        const preventScrollBubbling = (e) => {
+            const scrollArea = storyPanel.querySelector('.story-scroll-area');
+            if (!scrollArea) return;
+
+            const isScrollable = scrollArea.scrollHeight > scrollArea.clientHeight;
+
+            // If the content is too short to scroll, just block the wheel/touch entirely so page doesn't move
+            if (!isScrollable) {
+                if (e.cancelable) e.preventDefault();
+                return;
+            }
+
+            // If it IS scrollable, check if we're hitting the boundaries
+            const atTop = scrollArea.scrollTop <= 0;
+            const atBottom = Math.abs(scrollArea.scrollHeight - scrollArea.scrollTop - scrollArea.clientHeight) <= 2;
+
+            // e.deltaY exists on wheel events
+            if (e.type === 'wheel') {
+                if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) {
+                    if (e.cancelable) e.preventDefault(); // Prevent page from moving when hitting edges
+                }
+            }
+        };
+
+        storyPanel.addEventListener('wheel', preventScrollBubbling, { passive: false });
+        // NOTE: touchmove isn't strictly necessary to polyfill overscroll-behavior on modern mobile 
+        // but can be added if mobile scroll bleed behaves unpredictably.
     }
 }
 
@@ -995,3 +1073,4 @@ function initScrollAnimations() {
         }
     });
 }
+

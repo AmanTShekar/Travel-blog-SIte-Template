@@ -26,7 +26,8 @@
 
 .section-text {
     font-family: var(--font-editorial);
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    /* Fluid scaling */
     color: var(--text-sec);
     line-height: 1.8;
 }
@@ -127,6 +128,10 @@
     position: relative;
     z-index: 3;
     text-align: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 1.5rem;
+    margin: 0 auto;
 }
 
 /* ==========================================================================
@@ -139,7 +144,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 5rem var(--spacing-page) 0;
+    padding: clamp(3rem, 8vw, 5rem) var(--spacing-page) 0;
     overflow: hidden;
     background: radial-gradient(ellipse at 50% 30%, rgba(20, 18, 12, 1) 0%, #050505 70%);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -160,62 +165,208 @@
     font-size: 1.05rem;
 }
 
+.luxe-container-expand {
+    max-width: 1570px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-page);
+}
+
+/* --- VIEWPORT WRAP: Precision Layout Control (The Viewfinder) --- */
+.luxe-viewport-wrap {
+    width: 100%;
+    margin-top: 0.5rem;
+    height: calc(100vh - 120px);
+    /* Strict responsive height based on screen */
+    max-height: 1000px;
+    min-height: 700px;
+    /* Strong minimum for desktop map rendering */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+}
+
 /* --- TWO-COLUMN GRID: Map + Story Panel --- */
 .luxe-map-container {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 1.5rem;
-    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1570px;
     margin: 0 auto;
     align-items: stretch;
     position: relative;
     z-index: 5;
     flex: 1;
+    /* Consume remaining viewport space */
     min-height: 0;
-    width: 100%;
+    /* Core fix: allow flex item to shrink below content size */
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (min-width: 1025px) {
+    .luxe-map-container {
+        display: grid;
+        grid-template-columns: 1.8fr 550px;
+        grid-template-rows: 100%;
+        /* Force grid to not expand vertically */
+        height: 100%;
+        /* Ensure strict height pass-down */
+        max-height: 100%;
+    }
 }
 
 /* --- MAP CANVAS --- */
 .map-canvas {
     position: relative;
-    background: rgba(8, 8, 8, 0.6);
-    border: 1px solid rgba(212, 175, 55, 0.08);
-    padding: 1rem;
+    background: rgba(12, 12, 12, 0.7);
+    /* Slightly lighter box */
+    padding: 2% 0%;
+    /* Tiny top padding, 0 sides */
+    padding-bottom: 5%;
+    /* Keep 5% blank space under it */
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    /* Stronger visible border behind map */
+    border-radius: 8px;
+    /* Tighter border radius */
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    /* strict bounds */
 }
 
 .india-atlas-full {
     width: 100%;
-    height: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4));
+    height: 95%;
+    /* Reduced to accommodate the 5% padding */
+    max-height: 95%;
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+    transform: scale(0.98);
+    /* Almost flush but avoiding strict edge clipping */
+    transform-origin: center center;
 }
 
-/* --- STORY PANEL (Sidebar) --- */
+/* --- STORY PANEL (Sidebar Redesign) --- */
 .story-panel-luxe {
     position: relative;
-    background: rgba(12, 12, 12, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 0;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
+    background: rgba(12, 12, 12, 0.95);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
     z-index: 10;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    /* Absolute upper bound */
+    overflow: hidden;
+    /* Stop parent scrolling, child scrolls instead */
+    -webkit-overflow-scrolling: touch;
+    /* Ensure scrollbar looks clean */
     scrollbar-width: thin;
-    scrollbar-color: rgba(212, 175, 55, 0.2) transparent;
+    scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
+}
+
+.story-panel-luxe::-webkit-scrollbar {
+    width: 4px;
+}
+
+.story-panel-luxe::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.story-panel-luxe::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+}
+
+/* Internal Sidebar Navigation */
+.sidebar-nav-internal {
+    display: flex;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.side-nav-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 1.2rem 0;
+    /* Increased touch target */
+    color: rgba(255, 255, 255, 0.3);
+    font-family: var(--font-accent);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    /* Responsive text */
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 48px;
+    /* accessibility standard */
+}
+
+.side-nav-btn:hover {
+    color: var(--accent);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.side-nav-btn.active {
+    color: var(--accent);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.side-nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+}
+
+.story-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    /* Reverted to auto so it hides when not needed */
+    min-height: 0;
+    /* Ensure this flex child handles overflow */
+    overscroll-behavior: contain;
+    scrollbar-width: auto;
+    scrollbar-color: var(--accent) rgba(255, 255, 255, 0.03);
+    scrollbar-gutter: stable;
+    cursor: grab;
+    /* Cues for drag-scrolling */
+}
+
+.story-scroll-area:active {
+    cursor: grabbing;
+}
+
+/* Custom Scrollbar Styling (Webkit) - Minimalist 6px */
+.story-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.story-scroll-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    /* Ensure explicit color property */
+    border-radius: 4px;
+}
+
+.story-scroll-area::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 .story-content-inner {
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.8rem;
+    /* Significant padding reduction (was 3rem 2.5rem) */
 }
 
 /* Story Panel - Hero Image */
@@ -255,7 +406,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem 0;
+    padding: 1.2rem 1.5rem 0;
+    /* Tightened horizontal padding */
 }
 
 .coordinate-tag,
@@ -273,86 +425,123 @@
 
 .story-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    /* Maximum impact for 550px sidebar */
     color: var(--text-prime);
-    padding: 0.8rem 2rem 0;
-    line-height: 1.2;
-    letter-spacing: 1px;
+    padding: 1.2rem 1.5rem 0;
+    /* Tightened sidebar horizontal padding */
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    /* Tighter heading look */
+    word-wrap: break-word;
+    /* Safety for long names */
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 .story-divider {
-    width: 60px;
+    width: 70px;
     height: 1px;
     background: linear-gradient(to right, var(--accent), transparent);
-    margin: 1rem 2rem;
+    margin: 1rem 1.5rem;
+    /* Tighter minimalist spacing */
+}
+
+.story-quote-wrap {
+    padding: 0 1.5rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+.story-quote-wrap::before {
+    content: '"';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    font-size: 3rem;
+    font-family: var(--font-heading);
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
 }
 
 .story-quote {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.65);
-    padding: 0 2rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
     font-style: italic;
+    font-weight: 300;
 }
 
 /* Story Panel - Stats Grid */
 .story-stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    margin: 1.5rem 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 4px;
-    overflow: hidden;
+    gap: 0.5rem;
+    margin: 1.5rem 1.50rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.08);
+    /* Subtle gold hint */
+    background: rgba(255, 255, 255, 0.015);
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+    /* Minimalist sharp edges */
 }
 
 .story-stat {
     text-align: center;
-    padding: 1rem 0.5rem;
-    background: rgba(12, 12, 12, 0.6);
+    padding: 0;
 }
 
 .story-stat .stat-value {
     display: block;
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: var(--accent);
-    margin-bottom: 0.3rem;
-    letter-spacing: 0.5px;
+    margin-bottom: 0.2rem;
+    letter-spacing: -1px;
+    font-weight: 500;
 }
 
 .story-stat .stat-label {
-    font-family: var(--font-main);
+    display: block;
     font-size: 0.55rem;
+    font-family: var(--font-main);
+    color: rgba(255, 255, 255, 0.4);
     letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
 }
 
 /* Story Panel - Actions */
 .story-actions {
-    padding: 1.2rem 2rem 2rem;
+    padding: 0.5rem 1.5rem 2rem;
 }
 
 .btn-gold-minimal {
     display: inline-block;
+    padding: 1.2rem 2.5rem;
     font-family: var(--font-main);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 3px;
     color: var(--accent);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 10px 24px;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: rgba(212, 175, 55, 0.02);
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .btn-gold-minimal:hover {
-    background: rgba(212, 175, 55, 0.1);
+    background: var(--accent);
+    color: #000;
     border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
 }
 
 /* Map Hover Card (Desktop Tooltip) */
@@ -433,19 +622,22 @@
 
 .loc-btn {
     flex: 1 0 0;
-    min-width: 120px;
+    min-width: 140px;
+    /* Wider targets */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 1.8rem 1rem;
+    padding: 2.2rem 1.2rem;
+    /* Increased hit area */
     background: transparent;
     border: none;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     outline: none;
+    min-height: 48px;
 }
 
 /* Gold underline indicator */
@@ -501,7 +693,8 @@
 
 .loc-name {
     font-family: var(--font-main);
-    font-size: 0.55rem;
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    /* Increased for readability */
     letter-spacing: 2.5px;
     color: rgba(255, 255, 255, 0.25);
     text-transform: uppercase;
@@ -563,9 +756,10 @@
         position: relative;
         top: 0;
         width: 100%;
-        padding: 2rem 1.5rem;
+        padding: clamp(1.5rem, 5vw, 2rem) 1.5rem;
         min-height: auto;
-        background: rgba(12, 12, 12, 0.5);
+        background: rgba(12, 12, 12, 0.95);
+        /* More opaque for readability */
         backdrop-filter: blur(20px);
     }
 
@@ -596,40 +790,15 @@
     font-weight: 500;
 }
 
-.survey-year-tag {
-    font-size: 0.55rem;
-    letter-spacing: 2px;
-    color: var(--text-dim);
-    font-family: var(--font-main);
-    opacity: 0.6;
-}
-
-.story-title {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
-    /* Compact title */
-    line-height: 0.95;
-    margin-bottom: 2rem;
-    color: var(--text-prime);
-    text-transform: uppercase;
-    letter-spacing: -2px;
-}
-
-.story-divider {
-    width: 30px;
-    height: 1px;
-    background: var(--accent);
-    margin-bottom: 2.5rem;
-    opacity: 0.4;
-}
-
+/* Redundant section removed */
 .story-quote {
     font-family: var(--font-editorial);
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    /* Fluid scaling */
     font-style: italic;
     color: var(--text-sec);
     line-height: 1.5;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     max-width: 95%;
 }
 
@@ -958,9 +1127,6 @@
 
 /* --- SVG Interaction Layer --- */
 .map-interaction-layer {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
     filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.6));
 }
 
@@ -1047,23 +1213,25 @@
     }
 }
 
-/* Hotspots & Coordinate Markers */
-.hotspot,
+/* Hotspots & Coordinate Markers (Fat-Finger Friendly 44px) */
 .coordinate-marker {
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    pointer-events: all;
 }
 
-.pulse-outer,
 .c-pulse {
     fill: var(--accent);
-    opacity: 0.4;
+    opacity: 0.3;
     animation: c-pulse 2.5s infinite;
+    r: 22;
+    /* 44px diameter touch target */
 }
 
-.pulse-inner,
 .c-dot {
     fill: #fff;
+    r: 4;
+    /* Slightly larger base dot */
     filter: drop-shadow(0 0 5px var(--accent));
 }
 
@@ -1252,6 +1420,7 @@
         display: none;
     }
 
+    /* Obsolete Bottom Nav removed - navigation is now sidebar-internal */
     .architect-dossier {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -1425,7 +1594,8 @@
 }
 
 .trip-cat {
-    font-size: 0.7rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+    /* Increased */
     letter-spacing: 2px;
     color: var(--accent);
     display: block;
@@ -1457,8 +1627,8 @@
 
 /* Travel Archives Section */
 .travel-archives-luxe {
-    padding: 26rem var(--spacing-page) 15rem;
-    /* Massive top padding to prevent header clipping and add drama */
+    padding: 10rem var(--spacing-page) 8rem;
+    /* Corrected excessive spacing */
     background: var(--bg-prime);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
@@ -1493,9 +1663,9 @@
 
 .archive-img {
     position: relative;
-    height: 70vh;
-    /* Increased height for more cinematic presence */
-    min-height: 600px;
+    height: 50vh;
+    /* Reduced from 70vh to prevent excessive length */
+    min-height: 400px;
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1772,6 +1942,8 @@
         padding-bottom: 2rem;
         -webkit-overflow-scrolling: touch;
         width: calc(100% + (2 * var(--spacing-page)));
+        justify-content: flex-start;
+        /* Default for swiping */
     }
 
     .atlas-grid::-webkit-scrollbar,
@@ -1855,11 +2027,12 @@
 
 .archive-tag {
     font-family: var(--font-main);
-    font-size: 0.6rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+    /* Increased */
     letter-spacing: 2px;
     color: var(--accent);
     background: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
+    padding: 5px 12px;
     border: 1px solid rgba(212, 175, 55, 0.3);
     backdrop-filter: blur(8px);
 }
@@ -1900,32 +2073,80 @@
 }
 
 .stat-counter {
-    padding: 2rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.4s ease;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(20, 20, 20, 0.8) 0%, rgba(8, 8, 8, 0.95) 100%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-counter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .stat-counter:hover {
-    border-color: rgba(212, 175, 55, 0.15);
-    background: rgba(212, 175, 55, 0.03);
+    transform: translateY(-15px) scale(1.02);
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(212, 175, 55, 0.1);
+    background: linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+}
+
+.stat-counter:hover::before {
+    opacity: 1;
 }
 
 .counter-value {
     display: block;
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(3rem, 6vw, 4rem);
+    background: linear-gradient(to right, #ffffff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: var(--accent);
-    margin-bottom: 0.8rem;
+    /* fallback */
+    margin-bottom: 1rem;
     line-height: 1;
+    text-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
 }
 
 .counter-label {
     font-family: var(--font-main);
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.counter-label::after {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--accent);
+    opacity: 0.5;
+    transition: width 0.3s ease;
+}
+
+.stat-counter:hover .counter-label::after {
+    width: 40px;
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -2001,5 +2222,131 @@
 @media (max-width: 1024px) {
     .process-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 100% Mobile Perfection Overrides */
+@media (max-width: 480px) {
+    .luxe-viewport-wrap {
+        height: auto;
+        min-height: auto;
+        margin-top: 0;
+    }
+
+    .luxe-map-container {
+        height: auto;
+    }
+
+    .map-canvas {
+        height: 70vh;
+        min-height: 480px;
+    }
+
+    .story-panel-luxe {
+        height: auto;
+        min-height: 250px;
+    }
+
+    .india-atlas-full {
+        transform: scale(1.0) translateY(-5%);
+        transform-origin: center top;
+        height: auto;
+        max-height: 100%;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .archives-grid>*,
+    .process-grid>*,
+    .beliefs-grid>* {
+        margin: 0 auto;
+    }
+}
+
+/* === ABSOLUTE MOBILE PERFECTION PASS === */
+@media (max-width: 600px) {
+    .map-masterpiece {
+        min-height: auto !important;
+        padding-top: 2rem !important;
+        padding-bottom: 3rem !important;
+        /* Avoid clipping text inside map masterpiece */
+    }
+
+    .map-intro {
+        margin-bottom: 1rem !important;
+    }
+
+    .luxe-viewport-wrap {
+        height: auto !important;
+        min-height: 0 !important;
+        margin-top: 0 !important;
+        padding-bottom: 2rem !important;
+        display: block !important;
+    }
+
+    .luxe-map-container {
+        height: auto !important;
+        border: none !important;
+        background: transparent !important;
+        display: flex !important;
+        flex-direction: column !important;
+        margin-bottom: 4rem !important;
+    }
+
+    .map-canvas {
+        height: 70vh !important;
+        min-height: 480px !important;
+        padding: 5% 0 10% 0 !important;
+        /* Larger bottom padding on mobile to strictly prevent mask clipping */
+        background: rgba(8, 8, 8, 0.4) !important;
+        width: 100% !important;
+    }
+
+    .india-atlas-full {
+        transform: scale(0.95) !important;
+        /* Stay flush but avoid clipping bottom */
+        transform-origin: center center !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    .story-panel-luxe {
+        height: 500px !important;
+        /* Force a strict height on mobile so it CAN scroll */
+        min-height: auto !important;
+        border-left: none !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        width: 100% !important;
+        margin-top: 1rem;
+    }
+
+    /* Centering Grids (2x layout) */
+    .archives-grid,
+    .process-grid,
+    .beliefs-grid,
+    .atlas-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding-inline: var(--spacing-page) !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    .archives-grid>*,
+    .process-grid>*,
+    .beliefs-grid>*,
+    .atlas-grid>* {
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 }
