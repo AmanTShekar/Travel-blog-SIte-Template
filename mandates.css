@@ -1,11 +1,76 @@
 /* ==========================================================================
-   AERIE GLOBAL | MANDATES PAGE | THE COLLECTION (Premium Cinematic)
+   AERIE GLOBAL | MANDATES PAGE | REDESIGNED — Premium Immersive Experience
    ========================================================================== */
 
-/* --- 1. MANDATES HERO (Atmospheric) --- */
+/* --- SKIP LINK (Accessibility) --- */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #000;
+    padding: 0.8rem 2rem;
+    z-index: 100000;
+    font-size: 0.85rem;
+    font-family: var(--font-main);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Screen Reader Only Utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* --- Reduced Motion Preference --- */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .parallax-bg,
+    .hero-bg,
+    .mood-bg {
+        transform: none !important;
+    }
+}
+
+/* --- Focus Styles (Accessibility) --- */
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   1. HERO — Full Viewport Cinematic
+   ========================================================================== */
 .mandates-hero {
     position: relative;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,53 +80,216 @@
     background: #000;
 }
 
+.hero-bg-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
 .mandates-hero .hero-bg {
     position: absolute;
     inset: -50px;
     background-size: cover;
     background-position: center;
-    z-index: -2;
-    filter: brightness(0.5);
+    z-index: 0;
+    filter: brightness(0.45) saturate(1.2);
+    animation: heroZoom 25s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.08);
+    }
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.5) 80%,
+            rgba(5, 5, 5, 1) 100%);
 }
 
 .mandates-hero .hero-content {
     max-width: 900px;
     padding: 0 var(--spacing-page);
     z-index: 2;
+    position: relative;
 }
 
-/* --- 2. MANDATES MOOD GRID (Horizontal Scroll) --- */
+.hero-title {
+    font-size: clamp(3.5rem, 8vw, 6rem) !important;
+    letter-spacing: -1px;
+    margin-bottom: 2rem !important;
+}
+
+.hero-subtitle {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        height: 40px;
+    }
+
+    50% {
+        opacity: 1;
+        height: 60px;
+    }
+}
+
+.scroll-text {
+    font-family: var(--font-main);
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   2. PHILOSOPHY STRIP
+   ========================================================================== */
+.philosophy-strip {
+    background: var(--bg-sec);
+    padding: 6rem var(--spacing-page);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.philosophy-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-item {
+    text-align: center;
+    flex: 1;
+}
+
+.philosophy-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+}
+
+.philosophy-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.philosophy-item p {
+    font-family: var(--font-editorial);
+    font-size: 1rem;
+    color: var(--text-sec);
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.philosophy-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    opacity: 0.3;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   3. MOOD GRID — Horizontal Scroll Cards (GSAP Pinned on Desktop)
+   ========================================================================== */
 .mandates-mood-grid {
     position: relative;
     width: 100%;
-    background: var(--bg-sec);
+    background: var(--bg-prime);
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
+.mood-section-header {
+    padding: 0 var(--spacing-page) 1rem;
+    max-width: 600px;
+    padding-top: 0.5rem;
+}
+
+/* GSAP pins this section, height = 100vh, overflow hidden */
 .mandates-mood-grid.horizontal-scroll-section {
     height: 100vh;
     overflow: hidden;
-    padding: 0;
     display: flex;
-    align-items: center;
-    z-index: 5;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
 }
 
 .horizontal-container {
     display: flex;
-    height: 75vh;
     padding-left: 10vw;
+    padding-right: 4vw;
+    gap: 2rem;
+    align-items: center;
+    will-change: transform;
 }
 
 .mood-card {
-    width: 35vw;
-    height: 100%;
+    width: 30vw;
+    min-width: 320px;
+    height: 70vh;
+    max-height: 550px;
     flex-shrink: 0;
-    margin-right: 2rem;
-    background: var(--bg-prime);
+    background: var(--bg-sec);
     border: 1px solid var(--border-light);
+    border-radius: 4px;
     position: relative;
     overflow: hidden;
-    transition: 0.6s var(--ease-vincent);
+    transition: border-color 0.6s var(--ease-vincent),
+        box-shadow 0.6s var(--ease-vincent),
+        transform 0.6s var(--ease-vincent);
+    cursor: pointer;
+}
+
+.mood-card:hover,
+.mood-card:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+    transform: translateY(-8px);
 }
 
 .mood-bg {
@@ -69,13 +297,14 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    filter: grayscale(1) brightness(0.7);
+    filter: brightness(0.6) saturate(1.1);
     transition: transform 1.5s var(--ease-vincent), filter 1s ease;
 }
 
-.mood-card:hover .mood-bg {
+.mood-card:hover .mood-bg,
+.mood-card:focus-within .mood-bg {
     transform: scale(1.1);
-    filter: grayscale(0.2) brightness(0.9);
+    filter: brightness(0.75) saturate(1.3);
 }
 
 .mood-content {
@@ -83,45 +312,178 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 4rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 2rem 2rem 1.5rem;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.97) 0%,
+            rgba(0, 0, 0, 0.9) 30%,
+            rgba(0, 0, 0, 0.6) 60%,
+            rgba(0, 0, 0, 0.2) 80%,
+            transparent 100%);
     z-index: 2;
+}
+
+.mood-content .section-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.6rem;
+    opacity: 0.9;
 }
 
 .mood-title {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
     color: #fff;
-    margin-bottom: 1rem;
-    line-height: 1;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
 }
 
 .mood-desc {
     font-family: var(--font-editorial);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-sec);
-    opacity: 0.8;
-    max-width: 80%;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 95%;
 }
 
-/* --- 3. MANDATE EXPLORER (The Deep Dive) --- */
-.mandate-explorer-section {
+.full-link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+/* ==========================================================================
+   4. NATURE GALLERY — Masonry-Inspired Image Grid
+   ========================================================================== */
+.nature-gallery {
+    padding: 12rem var(--spacing-page);
+    background: var(--bg-prime);
+    overflow: hidden;
     position: relative;
-    padding: 10rem 0;
-    background: #000;
+    z-index: 20;
 }
 
+.gallery-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 6rem;
+}
+
+.gallery-subtitle {
+    max-width: 550px;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-sec);
+    cursor: pointer;
+    aspect-ratio: 4/3;
+}
+
+.gallery-item-tall {
+    grid-row: span 2;
+    aspect-ratio: auto;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease-vincent), filter 0.8s ease;
+    filter: saturate(0.9);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+    filter: saturate(1.2) brightness(1.1);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s var(--ease-vincent);
+}
+
+.gallery-item:hover .gallery-caption,
+.gallery-item:focus-within .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reveal animation for gallery items */
+.gallery-item.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--ease-vincent), transform 0.8s var(--ease-vincent);
+}
+
+.gallery-item.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item.reveal:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.gallery-item.reveal:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.gallery-item.reveal:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.gallery-item.reveal:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.gallery-item.reveal:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.gallery-item.reveal:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+/* ==========================================================================
+   5. STATE EXPLORER — Interactive Region Selector
+   ========================================================================== */
 .explorer-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    height: 100vh;
+    min-height: 100vh;
     background: var(--bg-prime);
     position: relative;
+    z-index: 20;
 }
 
 .explorer-list {
-    padding: 8rem var(--spacing-page);
+    padding: 6rem var(--spacing-page);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,131 +492,41 @@
     z-index: 10;
 }
 
-.state-list {
-    position: relative;
-    z-index: 10;
-    padding: 0 var(--spacing-page);
-}
-
 .state-item {
-    padding: 3rem 0;
+    padding: 2.5rem 0;
+    border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
-    transition: all 0.5s var(--ease-smooth);
+    transition: all 0.5s var(--ease-vincent);
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
+    background: none;
+    color: var(--text-sec);
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
 }
 
 .state-item:hover,
 .state-item.active {
-    padding-left: 3rem;
+    padding-left: 2rem;
+    color: #fff;
     border-bottom-color: var(--accent);
 }
 
-.state-id {
-    font-family: var(--font-main);
-    font-size: 0.8rem;
+.state-item.active {
     color: var(--accent);
-    letter-spacing: 5px;
-    opacity: 0.5;
+    font-weight: 500;
 }
 
-.state-name {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 5vw, 4rem);
-    text-transform: uppercase;
-}
-
-.state-item:hover .state-name {
-    color: var(--accent);
-}
-
-/* --- 4. SIGNATURE MANDATES (Refined) --- */
-.signature-mandates {
-    padding: 15rem var(--spacing-page);
-    background: var(--bg-prime);
-}
-
-.signature-item {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 10rem;
-    margin-bottom: 20rem;
-    align-items: center;
-}
-
-.signature-item.alt {
-    grid-template-columns: 1fr 1.2fr;
-}
-
-.signature-item.alt .signature-visual {
-    order: 2;
-}
-
-.signature-item.alt .signature-content {
-    order: 1;
-    text-align: right;
-}
-
-.signature-visual {
+.explorer-visual {
     position: relative;
-    height: 700px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.signature-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(0.3) contrast(1.1);
-    transition: transform 1.5s var(--ease-vincent);
-}
-
-.signature-item:hover .signature-visual img {
-    transform: scale(1.05);
-    filter: grayscale(0);
-}
-
-.signature-number {
-    position: absolute;
-    top: -3rem;
-    left: -3rem;
-    font-family: var(--font-heading);
-    font-size: 15rem;
-    color: rgba(255, 255, 255, 0.02);
-    line-height: 1;
-    z-index: -1;
-}
-
-.signature-content h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-}
-
-.signature-content ul {
-    margin: 3rem 0;
-    list-style: none;
-}
-
-.signature-content li {
-    font-size: 0.9rem;
-    color: var(--text-sec);
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-}
-
-/* --- 5. REVEAL LAYERS (Desktop Refinement) --- */
-.mandate-section-desktop {
-    background: #050505;
-    overflow: hidden;
-}
-
-.mandate-visuals {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+    min-height: 500px;
 }
 
 .visual-layer {
@@ -273,56 +545,271 @@
     z-index: 2;
 }
 
-.mandate-cards-overlay {
-    position: absolute;
-    top: 50%;
-    right: 10%;
-    transform: translateY(-50%);
-    width: 450px;
-    z-index: 50;
-    pointer-events: none;
-}
-
-.mandate-card-reveal {
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--border-light);
-    padding: 4rem;
+/* Card container positions cards inside the visual */
+.explorer-visual .mandate-card-reveal {
+    background: rgba(5, 5, 5, 0.94);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-left: 3px solid var(--accent);
+    padding: 2.5rem;
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
     pointer-events: none;
     position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    left: auto;
+    top: auto;
+    max-width: 420px;
+    width: calc(100% - 4rem);
     transition: all 0.8s var(--ease-vincent);
+    border-radius: 6px;
+    z-index: 10;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
-.mandate-card-reveal.active {
+.explorer-visual .mandate-card-reveal.active {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
-    position: relative;
+}
+
+.mandate-card-reveal h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #fff;
+    margin: 1rem 0;
+    letter-spacing: 1px;
+}
+
+.mandate-card-reveal .section-text {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.card-btn {
+    margin-top: 1.5rem;
+    font-size: 0.65rem !important;
+    padding: 0.8rem 1.8rem !important;
+    display: inline-block;
 }
 
 /* ==========================================================================
-   MANDATES PAGE RESPONSIVE MEDIA QUERIES
+   6. SIGNATURE MANDATES — Featured Project Showcases
    ========================================================================== */
+.signature-mandates {
+    padding: 12rem var(--spacing-page);
+    background: var(--bg-prime);
+    position: relative;
+    z-index: 20;
+}
 
+.signature-item {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8rem;
+    margin-bottom: 16rem;
+    align-items: center;
+}
+
+.signature-item:last-child {
+    margin-bottom: 0;
+}
+
+.signature-item.alt {
+    grid-template-columns: 1fr 1.2fr;
+}
+
+.signature-item.alt .signature-visual {
+    order: 2;
+}
+
+.signature-item.alt .signature-content {
+    order: 1;
+    text-align: right;
+}
+
+.signature-visual {
+    position: relative;
+    height: 650px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.signature-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9) contrast(1.05);
+    transition: transform 1.5s var(--ease-vincent), filter 0.8s ease;
+}
+
+.signature-item:hover .signature-visual img,
+.signature-item:focus-within .signature-visual img {
+    transform: scale(1.05);
+    filter: saturate(1.2) contrast(1.1);
+}
+
+.signature-number {
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+    font-family: var(--font-heading);
+    font-size: 12rem;
+    color: rgba(212, 175, 55, 0.04);
+    line-height: 1;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.portrait-overlay {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-family: var(--font-main);
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.signature-content h2 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.signature-features {
+    margin: 2.5rem 0;
+    list-style: none;
+    padding: 0;
+}
+
+.signature-features li {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    color: var(--text-sec);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.signature-features li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   7. CTA SECTION — Final Call to Action
+   ========================================================================== */
+.cta-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 8rem var(--spacing-page);
+    z-index: 20;
+}
+
+.cta-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3) saturate(1.2);
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            var(--bg-prime) 0%,
+            rgba(5, 5, 5, 0.3) 30%,
+            rgba(5, 5, 5, 0.3) 70%,
+            var(--bg-prime) 100%);
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.cta-title {
+    margin-bottom: 2rem !important;
+}
+
+.cta-text {
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    opacity: 0.85;
+}
+
+.cta-btn {
+    padding: 1.2rem 3rem !important;
+    letter-spacing: 4px !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE — DESKTOP LARGE (1440px+)
+   ========================================================================== */
 @media (min-width: 1440px) {
-    .mandate-cards-overlay {
-        right: 15%;
-        width: 500px;
+    .mandate-card-reveal {
+        max-width: 500px;
+        right: 12%;
+    }
+
+    .gallery-grid {
+        gap: 2rem;
+    }
+
+    .signature-item {
+        gap: 10rem;
     }
 }
 
+/* ==========================================================================
+   RESPONSIVE — TABLET (1024px)
+   ========================================================================== */
 @media (max-width: 1024px) {
     .explorer-container {
         grid-template-columns: 1fr;
-        height: auto;
+        min-height: auto;
     }
 
     .explorer-list {
-        padding: 6rem var(--spacing-page);
+        padding: 4rem var(--spacing-page);
         border-right: none;
         border-bottom: 1px solid var(--border-light);
+    }
+
+    .explorer-visual {
+        min-height: 450px;
+        position: relative;
+    }
+
+    .explorer-visual .mandate-card-reveal {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        left: 1.5rem;
+        max-width: none;
+        width: auto;
     }
 
     .signature-item,
@@ -340,36 +827,63 @@
 
     .signature-visual {
         height: 50vw;
+        min-height: 350px;
     }
 
+    /* Tablet: Adjust card sizes for GSAP horizontal scroll */
     .mood-card {
-        width: 60vw;
+        width: 55vw;
+        min-width: 300px;
+        height: 420px;
+        max-height: none;
     }
 
-    .mandate-cards-overlay {
-        top: auto;
-        bottom: 5%;
-        right: 5%;
-        left: 5%;
-        transform: none;
-        width: 90%;
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item-tall {
+        grid-row: span 1;
+        aspect-ratio: 4/3;
+    }
+
+    .philosophy-inner {
+        gap: 2.5rem;
+    }
+
+    .nature-gallery {
+        padding: 8rem var(--spacing-page);
+    }
+
+    .signature-mandates {
+        padding: 8rem var(--spacing-page);
     }
 }
 
+/* ==========================================================================
+   RESPONSIVE — MOBILE (768px)
+   ========================================================================== */
 @media (max-width: 768px) {
     .mood-card {
         width: 85vw;
+        min-width: 280px;
+        height: 380px;
+        max-height: none;
     }
 
     .mood-content {
         padding: 2rem;
     }
 
+    .mood-title {
+        font-size: 2rem;
+    }
+
     .state-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
-        padding: 2rem 0;
+        gap: 0.5rem;
+        padding: 1.8rem 0;
     }
 
     .state-item:hover,
@@ -381,12 +895,14 @@
         padding: 6rem var(--spacing-page);
     }
 
-    .mandate-explorer-section {
-        padding: 6rem 0;
+    .signature-item,
+    .signature-item.alt {
+        margin-bottom: 6rem;
     }
 
     .signature-visual {
         height: 60vw;
+        min-height: 250px;
     }
 
     .signature-number {
@@ -395,7 +911,193 @@
         left: -1rem;
     }
 
-    .state-name {
-        font-size: 3rem;
+    .signature-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .philosophy-inner {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .philosophy-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--accent), transparent);
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gallery-item-tall {
+        grid-row: span 1;
+        aspect-ratio: 4/3;
+    }
+
+    .gallery-header {
+        margin-bottom: 3rem;
+    }
+
+    .nature-gallery {
+        padding: 5rem var(--spacing-page);
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 4rem) !important;
+    }
+
+    .mandates-mood-grid {
+        padding-top: 5rem;
+    }
+
+    .cta-section {
+        min-height: 60vh;
+        padding: 5rem var(--spacing-page);
+    }
+
+    .explorer-visual {
+        min-height: 400px;
+    }
+
+    .explorer-visual .mandate-card-reveal {
+        padding: 2rem;
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+    }
+
+    .mandate-card-reveal h3 {
+        font-size: 1.6rem;
+    }
+
+    .mandate-card-reveal .section-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE — SMALL MOBILE (480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .mood-card {
+        width: 90vw;
+        min-width: 260px;
+        height: 340px;
+    }
+
+    .mood-content {
+        padding: 1.5rem;
+    }
+
+    .mood-title {
+        font-size: 1.6rem;
+    }
+
+    .mood-desc {
+        font-size: 0.85rem;
+    }
+
+    .signature-visual {
+        height: 55vw;
+        min-height: 200px;
+    }
+
+    .signature-content h2 {
+        font-size: 2rem;
+    }
+
+    .signature-features li {
+        font-size: 0.8rem;
+    }
+
+    .philosophy-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .explorer-visual {
+        min-height: 350px;
+    }
+
+    .explorer-visual .mandate-card-reveal {
+        padding: 1.5rem;
+        bottom: 0.75rem;
+        right: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .mandate-card-reveal h3 {
+        font-size: 1.4rem;
+    }
+
+    .mandate-card-reveal .section-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .card-btn {
+        margin-top: 1rem;
+        font-size: 0.6rem !important;
+        padding: 0.6rem 1.2rem !important;
+    }
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE
+   ========================================================================== */
+@media (forced-colors: active) {
+
+    .mood-card,
+    .gallery-item,
+    .mandate-card-reveal,
+    .signature-visual {
+        border: 2px solid ButtonText;
+    }
+
+    .state-item.active {
+        border-color: Highlight;
+    }
+
+    .btn-gold {
+        border: 2px solid ButtonText;
+    }
+
+    .btn-gold:hover {
+        background: Highlight;
+        color: HighlightText;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+
+    .mandates-hero,
+    .cta-section,
+    .mandates-mood-grid,
+    .explorer-container {
+        break-inside: avoid;
+    }
+
+    .hero-bg-container,
+    .hero-scroll-indicator,
+    .mood-bg,
+    .cta-bg,
+    .cta-overlay,
+    .visual-layer {
+        display: none;
+    }
+
+    .mandates-hero {
+        height: auto;
+        padding: 2rem;
+        color: #000;
+        background: #fff;
+    }
+
+    .signature-visual img {
+        filter: none;
     }
 }

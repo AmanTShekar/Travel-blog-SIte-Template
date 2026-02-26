@@ -911,6 +911,9 @@ function initParallax() {
 }
 
 function initHorizontalScroll() {
+    // Skip on pages that have their own inline GSAP horizontal scroll
+    if (window.location.pathname.includes('mandates') || window.location.pathname.includes('journal')) return;
+
     // Only on Desktop
     if (window.innerWidth > 1024) {
         const horizontalSections = document.querySelectorAll('.horizontal-scroll-section');
@@ -923,10 +926,10 @@ function initHorizontalScroll() {
                     scrollTrigger: {
                         trigger: section,
                         start: "top top",
-                        end: () => `+=${container.scrollWidth - window.innerWidth + 200}`, // Added buffer for full reveal
+                        end: () => `+=${container.scrollWidth - window.innerWidth + 200}`,
                         scrub: 1,
                         pin: true,
-                        pinType: "transform", // Better for SPA transformed containers
+                        pinType: "transform",
                         invalidateOnRefresh: true,
                         anticipatePin: 1
                     }

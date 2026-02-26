@@ -4,183 +4,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandates | Aerie Global</title>
+    <meta name="description"
+        content="Aerie Global Mandates — Curated luxury travel interventions across India. From Ladakh's frozen peaks to Kerala's emerald backwaters, experience precision-engineered journeys.">
+    <meta name="keywords"
+        content="luxury travel India, Ladakh expedition, Rajasthan royal, Kerala backwaters, Varanasi spiritual, curated travel, premium India travel">
+    <title>Mandates | Aerie Global — Curated Interventions</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="mandates.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Italiana&family=Tenor+Sans&display=swap"
         rel="stylesheet">
-    <style>
-        /* Simplified SPA specific corrections if any */
-        #app-content {
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav>
-        <div class="logo">AERIE</div>
-        <div class="nav-links">
+    <div id="cursor" aria-hidden="true"></div>
+    <div id="cursor-follower" aria-hidden="true"></div>
+
+    <nav aria-label="Main navigation">
+        <div class="logo"><a href="index.html" aria-label="Aerie Global Home">AERIE</a></div>
+        <div class="nav-links" role="navigation">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="mandates.html" class="active">Mandates</a>
+            <a href="mandates.html" class="active" aria-current="page">Mandates</a>
             <a href="journal.html">Journal</a>
-            <a href="#contact">Inquire</a>
+            <a href="#contact" id="inquire-trigger">Inquire</a>
         </div>
     </nav>
 
-    <main id="app-content">
-        <!-- New Hero -->
-        <section class="mandates-hero">
-            <div class="hero-bg"
-                style="background-image: url('https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=2500&q=80');">
+
+
+    <main id="main-content">
+        <!-- =========================================================
+             HERO SECTION — Full-Screen Cinematic India Landscape
+             ========================================================= -->
+        <section class="mandates-hero" aria-label="Mandates hero">
+            <div class="hero-bg-container" aria-hidden="true">
+                <div class="hero-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=2500&q=80');">
+                </div>
+                <div class="hero-bg-overlay"></div>
             </div>
             <div class="hero-content reveal reveal-stagger">
-                <span class="section-label reveal">THE COLLECTION</span>
-                <h1 class="reveal section-title">Curated <br><span class="editorial-gold">Interventions.</span></h1>
-                <p class="section-text reveal">
+                <span class="section-label reveal" aria-hidden="true">THE COLLECTION</span>
+                <h1 class="reveal section-title hero-title">Curated <br><span
+                        class="editorial-gold">Interventions.</span></h1>
+                <p class="section-text reveal hero-subtitle">
                     We do not sell vacations. We architect trajectories. Each mandate is a precision-engineered
                     experience designed to alter your internal state.
                 </p>
+                <div class="hero-scroll-indicator reveal" aria-hidden="true">
+                    <div class="scroll-line"></div>
+                    <span class="scroll-text">Scroll to Explore</span>
+                </div>
             </div>
         </section>
 
-        <!-- Mood Grid (Black Tomato Style) -->
-        <section class="mandates-mood-grid horizontal-scroll-section">
-            <div class="horizontal-container">
-                <!-- Card 1: Silence -->
-                <div class="mood-card">
+        <!-- =========================================================
+             PHILOSOPHY STRIP — Cinematic Text Band
+             ========================================================= -->
+        <section class="philosophy-strip" aria-label="Our philosophy">
+            <div class="philosophy-inner">
+                <div class="philosophy-item reveal">
+                    <span class="philosophy-number" aria-hidden="true">I</span>
+                    <h3>Precision</h3>
+                    <p>Every detail planned. Nothing by accident.</p>
+                </div>
+                <div class="philosophy-divider" aria-hidden="true"></div>
+                <div class="philosophy-item reveal">
+                    <span class="philosophy-number" aria-hidden="true">II</span>
+                    <h3>Access</h3>
+                    <p>Doors that open for no one else.</p>
+                </div>
+                <div class="philosophy-divider" aria-hidden="true"></div>
+                <div class="philosophy-item reveal">
+                    <span class="philosophy-number" aria-hidden="true">III</span>
+                    <h3>Transformation</h3>
+                    <p>You return different. That is the point.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             MOOD GRID — Horizontal Scrolling Cards
+             ========================================================= -->
+        <section class="mandates-mood-grid horizontal-scroll-section" aria-label="Travel moods">
+            <div class="mood-section-header reveal">
+                <span class="section-label">ATMOSPHERES</span>
+                <h2 class="section-title">Choose Your <span class="editorial">State.</span></h2>
+            </div>
+            <div class="horizontal-container" role="list" aria-label="Travel mood cards">
+                <!-- Card 1: Silence — Ladakh/Pangong -->
+                <article class="mood-card" role="listitem" tabindex="0" aria-label="Silence — High-altitude plateaus">
                     <div class="mood-bg"
-                        style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=1200&q=80');">
+                        style="background-image: url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80');"
+                        aria-hidden="true">
                     </div>
                     <div class="mood-content">
                         <span class="section-label" style="color: var(--accent);">01 // ATMOSPHERE</span>
                         <h3 class="mood-title">Silence</h3>
                         <p class="mood-desc section-text">High-altitude plateaus where the air is thin and the mind is
-                            clear. Ladakh. Spiti. Tibet.</p>
+                            clear. Ladakh. Spiti. Pangong.</p>
                     </div>
-                    <a href="#silence" class="full-link"></a>
-                </div>
+                    <a href="#silence" class="full-link" aria-label="Explore Silence mandate"><span
+                            class="sr-only">Explore Silence</span></a>
+                </article>
 
-                <!-- Card 2: Power -->
-                <div class="mood-card">
+                <!-- Card 2: Power — Rajasthan Forts -->
+                <article class="mood-card" role="listitem" tabindex="0" aria-label="Power — Royal Rajasthan">
                     <div class="mood-bg"
-                        style="background-image: url('https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=1200&q=80');">
+                        style="background-image: url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80');"
+                        aria-hidden="true">
                     </div>
                     <div class="mood-content">
                         <span class="section-label" style="color: var(--accent);">02 // LEGACY</span>
                         <h3 class="mood-title">Power</h3>
-                        <p class="mood-desc section-text">Walk the halls of living monarchs. Private access to the forts
-                            and
-                            palaces of Rajasthan.</p>
+                        <p class="mood-desc section-text">Walk the halls of living monarchs. Private access to the
+                            forts and palaces of Rajasthan.</p>
                     </div>
-                    <a href="#power" class="full-link"></a>
-                </div>
+                    <a href="#power" class="full-link" aria-label="Explore Power mandate"><span class="sr-only">Explore
+                            Power</span></a>
+                </article>
 
-                <!-- Card 3: Origins -->
-                <div class="mood-card">
+                <!-- Card 3: Origins — Varanasi Ghats -->
+                <article class="mood-card" role="listitem" tabindex="0" aria-label="Origins — Spiritual India">
                     <div class="mood-bg"
-                        style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');">
+                        style="background-image: url('https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1200&q=80');"
+                        aria-hidden="true">
                     </div>
                     <div class="mood-content">
                         <span class="section-label" style="color: var(--accent);">03 // SPIRIT</span>
                         <h3 class="mood-title">Origins</h3>
                         <p class="mood-desc section-text">The oldest living cities. Rituals that predate history.
-                            Varanasi.
-                            Madurai. Hampi.</p>
+                            Varanasi. Madurai. Hampi.</p>
                     </div>
-                    <a href="#origins" class="full-link"></a>
-                </div>
+                    <a href="#origins" class="full-link" aria-label="Explore Origins mandate"><span
+                            class="sr-only">Explore Origins</span></a>
+                </article>
 
-                <!-- Card 4: Wild -->
-                <div class="mood-card">
+                <!-- Card 4: Wild — Kerala Backwaters -->
+                <article class="mood-card" role="listitem" tabindex="0" aria-label="Wild — Kerala Nature">
                     <div class="mood-bg"
-                        style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=1200&q=80');">
+                        style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80');"
+                        aria-hidden="true">
                     </div>
                     <div class="mood-content">
                         <span class="section-label" style="color: var(--accent);">04 // PRIMAL</span>
                         <h3 class="mood-title">Wild</h3>
                         <p class="mood-desc section-text">Deep jungle tracking. The silent backwaters. Where nature
-                            dictates
-                            the rhythm.</p>
+                            dictates the rhythm.</p>
                     </div>
-                    <a href="#wild" class="full-link"></a>
+                    <a href="#wild" class="full-link" aria-label="Explore Wild mandate"><span class="sr-only">Explore
+                            Wild</span></a>
+                </article>
+
+                <!-- Card 5: Sacred — Himalayan Temples -->
+                <article class="mood-card" role="listitem" tabindex="0" aria-label="Sacred — Himalayan temples">
+                    <div class="mood-bg"
+                        style="background-image: url('https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=1200&q=80');"
+                        aria-hidden="true">
+                    </div>
+                    <div class="mood-content">
+                        <span class="section-label" style="color: var(--accent);">05 // DEVOTION</span>
+                        <h3 class="mood-title">Sacred</h3>
+                        <p class="mood-desc section-text">Ancient temples in the mist. The Himalayas hold answers to
+                            questions unasked.</p>
+                    </div>
+                    <a href="#sacred" class="full-link" aria-label="Explore Sacred mandate"><span
+                            class="sr-only">Explore Sacred</span></a>
+                </article>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             NATURE GALLERY — Immersive India Scenic Grid
+             ========================================================= -->
+        <section class="nature-gallery" aria-label="India scenic gallery">
+            <div class="gallery-header reveal">
+                <span class="section-label">LANDSCAPES</span>
+                <h2 class="section-title">India, <span class="editorial">Unimagined.</span></h2>
+                <p class="section-text gallery-subtitle">A subcontinent of extremes. From snow-capped summits to
+                    tropical shores — images that hint at what awaits.</p>
+            </div>
+            <div class="gallery-grid" role="list" aria-label="Scenic India photographs">
+                <div class="gallery-item gallery-item-tall reveal" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
+                        alt="Tiger in Indian national park, Ranthambore" loading="lazy" width="800" height="1000">
+                    <div class="gallery-caption">Ranthambore — The Tiger's Domain</div>
+                </div>
+                <div class="gallery-item reveal" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"
+                        alt="Taj Mahal at sunrise, Agra, India" loading="lazy" width="800" height="600">
+                    <div class="gallery-caption">Agra — Eternal Marble</div>
+                </div>
+                <div class="gallery-item reveal" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=800&q=80"
+                        alt="Hawa Mahal palace in Jaipur, Rajasthan" loading="lazy" width="800" height="600">
+                    <div class="gallery-caption">Jaipur — The Pink Mirage</div>
+                </div>
+                <div class="gallery-item gallery-item-tall reveal" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80"
+                        alt="Tea plantations in Munnar, Kerala" loading="lazy" width="800" height="1000">
+                    <div class="gallery-caption">Munnar — Sea of Green</div>
+                </div>
+                <div class="gallery-item reveal" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=800&q=80"
+                        alt="Mountain landscape in Ladakh, India" loading="lazy" width="800" height="600">
+                    <div class="gallery-caption">Ladakh — Where Earth Meets Sky</div>
+                </div>
+                <div class="gallery-item reveal" role="listitem">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80"
+                        alt="India Gate at sunset, New Delhi" loading="lazy" width="800" height="600">
+                    <div class="gallery-caption">Delhi — The Grand Capital</div>
                 </div>
             </div>
         </section>
 
-        <!-- NEW: Mandate Explorer Section (Matches app.js logic) -->
-        <section class="explorer-container">
-            <div class="explorer-list">
+        <!-- =========================================================
+             STATE EXPLORER — Interactive Region Selector
+             ========================================================= -->
+        <section class="explorer-container" aria-label="State explorer">
+            <div class="explorer-list" role="tablist" aria-label="Explore Indian states">
                 <span class="section-label" style="margin-bottom: 2rem;">STATE EXPLORER</span>
-                <div class="state-item active" data-target="ladakh">01 // LADAKH</div>
-                <div class="state-item" data-target="rajasthan">02 // RAJASTHAN</div>
-                <div class="state-item" data-target="varanasi">03 // VARANASI</div>
-                <div class="state-item" data-target="kerala">04 // KERALA</div>
+                <button class="state-item active" data-target="ladakh" role="tab" aria-selected="true"
+                    aria-controls="card-ladakh" id="tab-ladakh">01 // LADAKH</button>
+                <button class="state-item" data-target="rajasthan" role="tab" aria-selected="false"
+                    aria-controls="card-rajasthan" id="tab-rajasthan">02 // RAJASTHAN</button>
+                <button class="state-item" data-target="varanasi" role="tab" aria-selected="false"
+                    aria-controls="card-varanasi" id="tab-varanasi">03 // VARANASI</button>
+                <button class="state-item" data-target="kerala" role="tab" aria-selected="false"
+                    aria-controls="card-kerala" id="tab-kerala">04 // KERALA</button>
             </div>
 
-            <div class="explorer-visual">
+            <div class="explorer-visual" aria-label="State visuals">
                 <!-- Background Layers -->
-                <div class="visual-layer active" id="bg-ladakh"
-                    style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768b921?auto=format&fit=crop&w=2000&q=80')">
+                <div class="visual-layer active" id="bg-ladakh" aria-hidden="true"
+                    style="background-image: url('https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=2000&q=80')">
                 </div>
-                <div class="visual-layer" id="bg-rajasthan"
-                    style="background-image: url('https://images.unsplash.com/photo-1590050752117-23a9d7f28a8d?auto=format&fit=crop&w=2000&q=80')">
+                <div class="visual-layer" id="bg-rajasthan" aria-hidden="true"
+                    style="background-image: url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=2000&q=80')">
                 </div>
-                <div class="visual-layer" id="bg-varanasi"
+                <div class="visual-layer" id="bg-varanasi" aria-hidden="true"
                     style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=80')">
                 </div>
-                <div class="visual-layer" id="bg-kerala"
-                    style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=2000&q=80')">
+                <div class="visual-layer" id="bg-kerala" aria-hidden="true"
+                    style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=2000&q=80')">
                 </div>
 
                 <!-- Info Cards -->
-                <div class="mandate-card-reveal active" id="card-ladakh">
+                <div class="mandate-card-reveal active" id="card-ladakh" role="tabpanel" aria-labelledby="tab-ladakh">
                     <span class="section-label">ATMOSPHERE: SILENCE</span>
                     <h3>The Frozen Mandate</h3>
                     <p class="section-text">High-altitude extraction where oxygen is the real luxury. Sourcing the
                         silence between the peaks.</p>
+                    <a href="#inquire" class="btn-gold card-btn">Request Dossier</a>
                 </div>
-                <div class="mandate-card-reveal" id="card-rajasthan">
+                <div class="mandate-card-reveal" id="card-rajasthan" role="tabpanel" aria-labelledby="tab-rajasthan"
+                    hidden>
                     <span class="section-label">ATMOSPHERE: POWER</span>
                     <h3>The Golden Protocol</h3>
                     <p class="section-text">Private inheritance in the desert's most guarded echoes. Living within the
                         fortress walls.</p>
+                    <a href="#inquire" class="btn-gold card-btn">Request Dossier</a>
                 </div>
-                <div class="mandate-card-reveal" id="card-varanasi">
+                <div class="mandate-card-reveal" id="card-varanasi" role="tabpanel" aria-labelledby="tab-varanasi"
+                    hidden>
                     <span class="section-label">ATMOSPHERE: ORIGINS</span>
                     <h3>The River Archive</h3>
-                    <p class="section-text">Rituals performed at the intersection of life and death. Decoding the oldest
-                        living geography.</p>
+                    <p class="section-text">Rituals performed at the intersection of life and death. Decoding the
+                        oldest living geography.</p>
+                    <a href="#inquire" class="btn-gold card-btn">Request Dossier</a>
                 </div>
-                <div class="mandate-card-reveal" id="card-kerala">
+                <div class="mandate-card-reveal" id="card-kerala" role="tabpanel" aria-labelledby="tab-kerala" hidden>
                     <span class="section-label">ATMOSPHERE: WILD</span>
                     <h3>Tropical Roots</h3>
                     <p class="section-text">Navigating the emerald gardens where trade winds carry empires. The
                         architecture of deep green.</p>
+                    <a href="#inquire" class="btn-gold card-btn">Request Dossier</a>
                 </div>
             </div>
         </section>
 
-        <!-- Signature Mandates -->
-        <section class="signature-mandates" id="silence">
+        <!-- =========================================================
+             SIGNATURE MANDATES — Featured Projects
+             ========================================================= -->
+        <section class="signature-mandates" id="silence" aria-label="Signature mandates">
             <div class="reveal" style="text-align: center; margin-bottom: 8rem;">
                 <span class="section-label">SELECT PROJECTS</span>
                 <h2 class="section-title">The <span class="editorial">Signature List.</span></h2>
             </div>
 
-            <!-- Project 1 -->
-            <div class="signature-item reveal">
+            <!-- Project 1 — Snow Leopard Expedition -->
+            <article class="signature-item reveal" aria-label="The Grey Ghost — Ladakh expedition">
                 <div class="signature-visual">
-                    <div class="signature-number">01</div>
+                    <div class="signature-number" aria-hidden="true">01</div>
                     <img src="https://images.unsplash.com/photo-1518005020480-10f43bc5406b?auto=format&fit=crop&w=1200&q=80"
-                        alt="Ghost">
+                        alt="Snow leopard expedition in Ladakh with dramatic Himalayan peaks in winter" loading="lazy"
+                        width="1200" height="700">
                     <div class="portrait-overlay">LADAKH // WINTER</div>
                 </div>
                 <div class="signature-content">
@@ -189,21 +312,23 @@
                         A 14-day expedition into the Hemis National Park during the dead of winter. The objective: to
                         track the elusive snow leopard.
                     </p>
-                    <ul style="margin-top: 2rem; color: var(--text-sec); line-height: 1.8;">
-                        <li>// Private Spotters trained by National Geographic</li>
-                        <li>// High-altitude heated glamping infrastructure</li>
-                        <li>// Access to restricted border zones</li>
+                    <ul class="signature-features" role="list">
+                        <li role="listitem">Private Spotters trained by National Geographic</li>
+                        <li role="listitem">High-altitude heated glamping infrastructure</li>
+                        <li role="listitem">Access to restricted border zones</li>
                     </ul>
                     <a href="#inquire" class="btn-gold" style="margin-top: 3rem;">REQUEST DOSSIER</a>
                 </div>
-            </div>
+            </article>
 
-            <!-- Project 2 -->
-            <div class="signature-item alt reveal" id="power">
+            <!-- Project 2 — Royal Rajasthan -->
+            <article class="signature-item alt reveal" id="power" aria-label="The Royal Nexus — Jaipur">
                 <div class="signature-visual">
-                    <div class="signature-number" style="right: 0; left: auto; text-align: right;">02</div>
+                    <div class="signature-number" aria-hidden="true" style="right: 0; left: auto; text-align: right;">02
+                    </div>
                     <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80"
-                        alt="Jaipur">
+                        alt="Pink sandstone architecture of Hawa Mahal in Jaipur, Rajasthan" loading="lazy" width="1200"
+                        height="700">
                     <div class="portrait-overlay" style="right: auto; left: 2rem;">JAIPUR // ROYAL</div>
                 </div>
                 <div class="signature-content">
@@ -212,21 +337,22 @@
                         Beyond the hotel suite. We secure residence within the private quarters of the City Palace,
                         hosted by the royal family's personal staff.
                     </p>
-                    <ul style="margin-top: 2rem; color: var(--text-sec); line-height: 1.8; list-style: none;">
-                        <li>// Dinner with local historians and nobility</li>
-                        <li>// Private Polo matches arranged on request</li>
-                        <li>// Access to the royal jewelry archives</li>
+                    <ul class="signature-features" role="list">
+                        <li role="listitem">Dinner with local historians and nobility</li>
+                        <li role="listitem">Private Polo matches arranged on request</li>
+                        <li role="listitem">Access to the royal jewelry archives</li>
                     </ul>
                     <a href="#inquire" class="btn-gold" style="margin-top: 3rem;">REQUEST DOSSIER</a>
                 </div>
-            </div>
+            </article>
 
-            <!-- Project 3 -->
-            <div class="signature-item reveal" id="origins">
+            <!-- Project 3 — Varanasi -->
+            <article class="signature-item reveal" id="origins" aria-label="The River Protocol — Varanasi">
                 <div class="signature-visual">
-                    <div class="signature-number">03</div>
+                    <div class="signature-number" aria-hidden="true">03</div>
                     <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1200&q=80"
-                        alt="Varanasi">
+                        alt="Ancient ghats of Varanasi along the Ganges river at dawn" loading="lazy" width="1200"
+                        height="700">
                     <div class="portrait-overlay">VARANASI // ETERNAL</div>
                 </div>
                 <div class="signature-content">
@@ -235,19 +361,62 @@
                         A study in death and rebirth. A private boat takes you through the burning ghats at dawn, guided
                         by a scholar of Sanskrit scriptures.
                     </p>
-                    <ul style="margin-top: 2rem; color: var(--text-sec); line-height: 1.8;">
-                        <li>// Private audience with the head priest</li>
-                        <li>// Dawn boat rituals on the Ganges</li>
-                        <li>// Stay at a restored 18th-century river mansion</li>
+                    <ul class="signature-features" role="list">
+                        <li role="listitem">Private audience with the head priest</li>
+                        <li role="listitem">Dawn boat rituals on the Ganges</li>
+                        <li role="listitem">Stay at a restored 18th-century river mansion</li>
                     </ul>
                     <a href="#inquire" class="btn-gold" style="margin-top: 3rem;">REQUEST DOSSIER</a>
                 </div>
-            </div>
+            </article>
 
+            <!-- Project 4 — Kerala (NEW) -->
+            <article class="signature-item alt reveal" id="wild" aria-label="Tropical Roots — Kerala">
+                <div class="signature-visual">
+                    <div class="signature-number" aria-hidden="true" style="right: 0; left: auto; text-align: right;">04
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80"
+                        alt="Serene houseboat on Kerala backwaters surrounded by palm trees" loading="lazy" width="1200"
+                        height="700">
+                    <div class="portrait-overlay" style="right: auto; left: 2rem;">KERALA // EMERALD</div>
+                </div>
+                <div class="signature-content">
+                    <h2 class="section-title">Tropical <br><span class="editorial">Roots.</span></h2>
+                    <p class="section-text" style="max-width: 400px; margin-top: 2rem; margin-left: auto;">
+                        From the misty peaks of Munnar to the languid backwaters of Alleppey. Where spice routes
+                        once dictated empires.
+                    </p>
+                    <ul class="signature-features" role="list">
+                        <li role="listitem">Private houseboat through unexplored canals</li>
+                        <li role="listitem">Kathakali performances under moonlight</li>
+                        <li role="listitem">Sunrise trek through Eravikulam National Park</li>
+                    </ul>
+                    <a href="#inquire" class="btn-gold" style="margin-top: 3rem;">REQUEST DOSSIER</a>
+                </div>
+            </article>
+        </section>
+
+        <!-- =========================================================
+             CTA SECTION — Cinematic Call to Action
+             ========================================================= -->
+        <section class="cta-section" aria-label="Begin your journey" id="contact">
+            <div class="cta-bg" aria-hidden="true"
+                style="background-image: url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=2500&q=80');">
+            </div>
+            <div class="cta-overlay" aria-hidden="true"></div>
+            <div class="cta-content reveal">
+                <span class="section-label">BEGIN</span>
+                <h2 class="section-title cta-title">Your Mandate <br><span class="editorial-gold">Awaits.</span></h2>
+                <p class="section-text cta-text">
+                    Every journey begins with a conversation. Share your vision, and we will architect the impossible.
+                </p>
+                <a href="#inquire" class="btn-gold cta-btn">START THE CONVERSATION</a>
+            </div>
         </section>
 
     </main>
-    <footer>
+
+    <footer role="contentinfo">
         <div class="footer-grid">
             <div class="footer-brand">
                 <h2>AERIE</h2>
@@ -266,21 +435,139 @@
                 <h4>CONNECT</h4>
                 <ul>
                     <li><a href="mailto:access@aerie.travel">access@aerie.travel</a></li>
-                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#" aria-label="Follow us on Instagram">Instagram</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>© 2025 AERIE GLOBAL. ALL RIGHTS RESERVED.</div>
+            <div>&copy; 2025 AERIE GLOBAL. ALL RIGHTS RESERVED.</div>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
     <script src="app.js"></script>
 
+    <!-- Mandates Page Specific Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // =============================================
+            // GSAP HORIZONTAL SCROLL — Pinned Mood Grid
+            // =============================================
+            function initHorizontalScroll() {
+                const section = document.querySelector('.mandates-mood-grid.horizontal-scroll-section');
+                const container = document.querySelector('.horizontal-container');
+                if (!section || !container) return;
+
+                const tween = gsap.to(container, {
+                    x: () => -(container.scrollWidth - window.innerWidth),
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top top',
+                        end: () => '+=' + (container.scrollWidth - window.innerWidth),
+                        pin: true,
+                        scrub: true,
+                        invalidateOnRefresh: true,
+                    }
+                });
+            }
+
+            // Wait for GSAP and ScrollTrigger to load
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                // Small delay to ensure DOM is fully laid out
+                requestAnimationFrame(() => {
+                    initHorizontalScroll();
+                });
+            }
+
+            // =============================================
+            // EXPLORER TABS — Keyboard Nav & Accessibility
+            // =============================================
+            const tabs = document.querySelectorAll('.state-item[role="tab"]');
+            const panels = document.querySelectorAll('.mandate-card-reveal[role="tabpanel"]');
+            const bgLayers = document.querySelectorAll('.visual-layer');
+
+            function activateTab(target) {
+                const targetId = target.getAttribute('data-target');
+
+                // Update tabs
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                target.classList.add('active');
+                target.setAttribute('aria-selected', 'true');
+
+                // Update panels
+                panels.forEach(p => {
+                    p.classList.remove('active');
+                    p.setAttribute('hidden', '');
+                });
+                const activePanel = document.getElementById('card-' + targetId);
+                if (activePanel) {
+                    activePanel.classList.add('active');
+                    activePanel.removeAttribute('hidden');
+                }
+
+                // Update backgrounds
+                bgLayers.forEach(bg => bg.classList.remove('active'));
+                const activeBg = document.getElementById('bg-' + targetId);
+                if (activeBg) activeBg.classList.add('active');
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => activateTab(tab));
+                // Also activate on hover for desktop
+                tab.addEventListener('mouseenter', () => activateTab(tab));
+
+                tab.addEventListener('keydown', (e) => {
+                    const tabList = Array.from(tabs);
+                    const idx = tabList.indexOf(tab);
+                    let nextIdx;
+
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        nextIdx = (idx + 1) % tabList.length;
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        nextIdx = (idx - 1 + tabList.length) % tabList.length;
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        nextIdx = 0;
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        nextIdx = tabList.length - 1;
+                    }
+
+                    if (nextIdx !== undefined) {
+                        tabList[nextIdx].focus();
+                        activateTab(tabList[nextIdx]);
+                    }
+                });
+            });
+
+            // =============================================
+            // GALLERY REVEAL — Intersection Observer
+            // =============================================
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.gallery-item.reveal, .philosophy-item.reveal').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>
