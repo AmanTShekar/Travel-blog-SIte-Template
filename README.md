@@ -4,7 +4,7 @@
 
 AERIE is a premium, minimalist web template designed to redefine how travel is documented. Moving away from cluttered, ad-heavy blog layouts, this project showcases a **"Luxury Mandate"** aesthetic—blending raw exploration grit with high-end execution.
 
-![AERIE Showcase Banner](Screenshot 2026-03-24 211146.png)
+![AERIE Showcase Banner](Travel-blog-SIte-Template/Screenshot 2026-03-24 211146.png)
 
 [**Live Demo**](https://amantshekar.github.io/Travel-blog-SIte-Template/)
 
