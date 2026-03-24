@@ -6,7 +6,7 @@ AERIE is a premium, minimalist web template designed to redefine how travel is d
 
 ![AERIE Showcase Banner](Travel-blog-SIte-Template/Screenshot 2026-03-24 211146.png)
 
-[**Live Demo**]([https://amantshekar.github.io/Travel-blog-SIte-Template/](https://github.com/AmanTShekar/Travel-blog-SIte-Template/blob/main/Screenshot%202026-03-24%20211146.png))
+[**Live Demo**](https://amantshekar.github.io/Travel-blog-SIte-Template/)
 
 ---
 
